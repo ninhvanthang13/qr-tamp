@@ -1,98 +1,138 @@
 'use strict';
 
-const { ZIGZAG, BASE_URL, STAMP_CONFIG } = require('./stampConfig');
+const { ZIGZAG, BASE_URL: DEFAULT_BASE_URL, STAMP_CONFIG: DEFAULT_STAMP_CONFIG } = require('./stampConfig');
+const store = require('./store');
+
+// Build the ordered format array from a type config object
+function buildFormat(cfg) {
+  const parts = [];
+  if (cfg.prefix) parts.push('PREFIX');
+  parts.push('YEAR');
+  if (cfg.productCodeLen > 0) parts.push('PRODUCT_CODE');
+  if (cfg.letterCount > 0) parts.push('LETTERS');
+  parts.push('DIGITS');
+  return parts;
+}
+
+// Build a validation regex from config params
+function buildRegex(cfg) {
+  let pat = '';
+  if (cfg.prefix) pat += cfg.prefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  pat += `\\d{2}`;
+  if (cfg.productCodeLen > 0) pat += `[A-Z]{${cfg.productCodeLen}}`;
+  if (cfg.letterCount > 0) pat += `[A-Z]{${cfg.letterCount}}`;
+  pat += `\\d{${cfg.digitCount}}`;
+  return new RegExp(`^${pat}$`);
+}
+
+// Returns effective config: { baseUrl, types: { TYPE: { name, urlPath, prefix, productCodeLen, letterCount, digitCount, format, regex } } }
+function getEffectiveConfig() {
+  const stored = store.getStampTypeConfig();
+  const baseUrl = (stored && stored.baseUrl) || DEFAULT_BASE_URL;
+
+  const types = {};
+  for (const [key, def] of Object.entries(DEFAULT_STAMP_CONFIG)) {
+    const override = stored && stored.types && stored.types[key];
+    const merged = {
+      name:           (override && override.name           != null) ? override.name           : def.name,
+      urlPath:        (override && override.urlPath        != null) ? override.urlPath        : def.urlPath,
+      prefix:         (override && override.prefix         != null) ? override.prefix         : def.prefix,
+      productCodeLen: (override && override.productCodeLen != null) ? override.productCodeLen : def.productCodeLen,
+      letterCount:    (override && override.letterCount    != null) ? override.letterCount    : def.letterCount,
+      digitCount:     (override && override.digitCount     != null) ? override.digitCount     : def.digitCount,
+    };
+    merged.format = buildFormat(merged);
+    merged.regex  = buildRegex(merged);
+    types[key] = merged;
+  }
+
+  return { baseUrl, types };
+}
+
+// Flat config shape compatible with old STAMP_CONFIG (keyed by type, with baseUrl at root)
+function getEffectiveFlatConfig() {
+  const { baseUrl, types } = getEffectiveConfig();
+  return { baseUrl, ...types };
+}
 
 function letterFromPos(pos) {
   const p = ((pos % ZIGZAG) + ZIGZAG) % ZIGZAG;
   return p <= 25
-    ? String.fromCharCode(65 + p)           // A‥Z
-    : String.fromCharCode(65 + (ZIGZAG - p)); // Y‥B  (p=26→Y, p=49→B)
+    ? String.fromCharCode(65 + p)
+    : String.fromCharCode(65 + (ZIGZAG - p));
 }
 
-function makeSerial(type, year, productCode, lPos, counter) {
-  const config = STAMP_CONFIG[type];
-  if (!config) throw new Error(`Unknown stamp type: ${type}`);
-
+function makeSerial(typeCfg, year, productCode, lPos, counter) {
   const parts = {
-    PREFIX: config.prefix,
-    YEAR: String(year).slice(-2),
-    PRODUCT_CODE: config.productCodeLen > 0 
-      ? ((productCode || 'AAA') + 'AAA').slice(0, config.productCodeLen).toUpperCase()
+    PREFIX:       typeCfg.prefix || '',
+    YEAR:         String(year).slice(-2),
+    PRODUCT_CODE: typeCfg.productCodeLen > 0
+      ? ((productCode || 'AAA') + 'AAA').slice(0, typeCfg.productCodeLen).toUpperCase()
       : '',
-    DIGITS: String(counter).padStart(config.digitCount, '0')
+    DIGITS:       String(counter).padStart(typeCfg.digitCount, '0'),
   };
 
-  // Generate Letters based on letterCount
-  if (config.letterCount === 1) {
+  if (typeCfg.letterCount === 1) {
     parts.LETTERS = letterFromPos(lPos);
-  } else if (config.letterCount === 2) {
-    const left = letterFromPos(Math.floor(lPos / ZIGZAG) % ZIGZAG);
-    const right = letterFromPos(lPos % ZIGZAG);
-    parts.LETTERS = left + right;
+  } else if (typeCfg.letterCount === 2) {
+    parts.LETTERS = letterFromPos(Math.floor(lPos / ZIGZAG) % ZIGZAG)
+                  + letterFromPos(lPos % ZIGZAG);
   } else {
     parts.LETTERS = '';
   }
 
-  // Build the final serial string based on the configured format array
-  return config.format.map(part => parts[part] || '').join('');
+  return typeCfg.format.map(p => parts[p] || '').join('');
 }
 
-function maxCounter(type) {
-  const config = STAMP_CONFIG[type];
-  if (!config) return 0;
-  return Math.pow(10, config.digitCount) - 1;
+function maxCounter(typeCfg) {
+  return Math.pow(10, typeCfg.digitCount) - 1;
 }
 
-function maxLetterPos(type) {
-  const config = STAMP_CONFIG[type];
-  if (!config) return 0;
-  return Math.pow(ZIGZAG, config.letterCount);
+function maxLetterPos(typeCfg) {
+  return Math.pow(ZIGZAG, typeCfg.letterCount || 1);
 }
 
-function advance(type, lPos, counter) {
-  const mc = maxCounter(type);
-  const ml = maxLetterPos(type);
+function advance(typeCfg, lPos, counter) {
+  const mc = maxCounter(typeCfg);
+  const ml = maxLetterPos(typeCfg);
   counter++;
   if (counter > mc) { counter = 0; lPos = (lPos + 1) % ml; }
   return { lPos, counter };
 }
 
 function generateBatch({ type, year, productCode = '', lPos = 0, counter = 0, qty }) {
+  const { baseUrl, types } = getEffectiveConfig();
+  const typeCfg = types[type];
+  if (!typeCfg) throw new Error(`Unknown stamp type: ${type}`);
+
   const items = [];
   let lp = lPos, ct = counter;
-  const config = STAMP_CONFIG[type];
 
   for (let i = 0; i < qty; i++) {
-    const serial = makeSerial(type, year, productCode, lp, ct);
-    const url = BASE_URL + config.urlPath + serial;
+    const serial = makeSerial(typeCfg, year, productCode, lp, ct);
+    const url    = baseUrl + typeCfg.urlPath + serial;
     items.push({ serial, url });
-    ({ lPos: lp, counter: ct } = advance(type, lp, ct));
+    ({ lPos: lp, counter: ct } = advance(typeCfg, lp, ct));
   }
 
   return { items, nextLPos: lp, nextCounter: ct };
 }
 
 function detectType(serial) {
-  for (const [type, config] of Object.entries(STAMP_CONFIG)) {
-    if (config.regex.test(serial)) return type;
+  const { types } = getEffectiveConfig();
+  for (const [type, cfg] of Object.entries(types)) {
+    if (cfg.regex.test(serial)) return type;
   }
   return null;
 }
 
-// Export legacy structure for compatibility with routes.js if needed
-const URL_PATHS = Object.fromEntries(
-  Object.entries(STAMP_CONFIG).map(([k, v]) => [k, v.urlPath])
-);
-const PATTERNS = Object.fromEntries(
-  Object.entries(STAMP_CONFIG).map(([k, v]) => [k, v.regex])
-);
-
-module.exports = { 
-  makeSerial, 
-  generateBatch, 
-  detectType, 
-  URL_PATHS, 
-  BASE_URL, 
-  PATTERNS, 
-  letterFromPos 
+module.exports = {
+  makeSerial,
+  generateBatch,
+  detectType,
+  getEffectiveConfig,
+  getEffectiveFlatConfig,
+  letterFromPos,
+  // legacy compat
+  BASE_URL: DEFAULT_BASE_URL,
 };

@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { getConfig, getState, generateBatch, getBatches, searchSerials, csvExportUrl, verifySerial } from './api';
+import { getConfig, saveConfig, getState, generateBatch, getBatches, searchSerials, csvExportUrl, verifySerial } from './api';
 import StampStrip from './components/StampStrip';
 import QRCode from 'qrcode';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
-import { QrCode, ClipboardList, Search, Download, Printer, Box, Layers, Play, CheckCircle, XCircle } from 'lucide-react';
+import { QrCode, ClipboardList, Search, Download, Printer, Box, Layers, Play, CheckCircle, XCircle, Settings, FileText } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('generator');
@@ -26,6 +26,7 @@ export default function App() {
           <NavItem icon={<Play size={18} />} label="Generator" active={activeTab === 'generator'} onClick={() => setActiveTab('generator')} />
           <NavItem icon={<ClipboardList size={18} />} label="History & Export" active={activeTab === 'history'} onClick={() => setActiveTab('history')} />
           <NavItem icon={<Search size={18} />} label="Search & Verify" active={activeTab === 'search'} onClick={() => setActiveTab('search')} />
+          <NavItem icon={<Settings size={18} />} label="URL Config" active={activeTab === 'settings'} onClick={() => setActiveTab('settings')} />
         </nav>
         <div className="p-4 text-xs text-gray-400 text-center border-t border-gray-100">
           TraceViet IBO © 2026
@@ -37,6 +38,7 @@ export default function App() {
         {activeTab === 'generator' && <GeneratorTab />}
         {activeTab === 'history' && <HistoryTab />}
         {activeTab === 'search' && <SearchTab />}
+        {activeTab === 'settings' && <UrlConfigTab />}
       </div>
     </div>
   );
@@ -140,7 +142,7 @@ function GeneratorTab() {
               <div>
                 <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Stamp Type</label>
                 <select name="type" value={form.type} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-500 transition-all font-medium text-gray-700">
-                  {stampConfig ? Object.entries(stampConfig).map(([key, config]) => (
+                  {stampConfig ? Object.entries(stampConfig).filter(([, v]) => typeof v === 'object').map(([key, config]) => (
                     <option key={key} value={key}>{config.name} ({key})</option>
                   )) : <option value={form.type}>Loading...</option>}
                 </select>
@@ -363,6 +365,163 @@ function HistoryTab() {
            </tbody>
         </table>
       </div>
+    </div>
+  );
+}
+
+// -----------------------------------------------------------------------------
+// URL Config Tab
+// -----------------------------------------------------------------------------
+// URL + Serial Structure Config Tab
+// -----------------------------------------------------------------------------
+const FIELD_META = [
+  { key: 'name',           label: 'Tên hiển thị',      type: 'text',   placeholder: 'Ví dụ: Sản phẩm' },
+  { key: 'urlPath',        label: 'URL Path',           type: 'text',   placeholder: '/02/' },
+  { key: 'prefix',        label: 'Tiền tố (Prefix)',   type: 'text',   placeholder: 'C hoặc để trống' },
+  { key: 'productCodeLen', label: 'Độ dài Mã SP (SSS)', type: 'number', placeholder: '3 (0 = không dùng)' },
+  { key: 'letterCount',   label: 'Số chữ cái (A→Z)',   type: 'number', placeholder: '1 hoặc 2' },
+  { key: 'digitCount',    label: 'Số chữ số cuối',     type: 'number', placeholder: '5' },
+];
+
+function buildSerialPreview(cfg, sampleProduct = 'PLM') {
+  const yy = '26';
+  const prefix = cfg.prefix || '';
+  const pc = cfg.productCodeLen > 0 ? (sampleProduct + 'AAA').slice(0, cfg.productCodeLen) : '';
+  const letters = cfg.letterCount === 1 ? 'A' : cfg.letterCount === 2 ? 'AA' : '';
+  const digits = '0'.repeat(Math.max(1, cfg.digitCount || 5));
+  const parts = [
+    prefix, yy, pc, letters, digits
+  ].filter(p => p !== undefined && p !== null);
+  return parts.join('');
+}
+
+function UrlConfigTab() {
+  const [baseUrl, setBaseUrl] = useState('');
+  const [types, setTypes] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [saved, setSaved] = useState(false);
+
+  useEffect(() => {
+    getConfig().then(cfg => {
+      const { baseUrl: bu, ...rest } = cfg;
+      setBaseUrl(bu || '');
+      // strip non-plain fields (format, regex) — keep only editable ones
+      const clean = {};
+      for (const [k, v] of Object.entries(rest)) {
+        clean[k] = {
+          name: v.name || '',
+          urlPath: v.urlPath || '/',
+          prefix: v.prefix || '',
+          productCodeLen: v.productCodeLen ?? 0,
+          letterCount: v.letterCount ?? 1,
+          digitCount: v.digitCount ?? 5,
+        };
+      }
+      setTypes(clean);
+      setLoading(false);
+    }).catch(console.error);
+  }, []);
+
+  const setField = (type, field, value) => {
+    setTypes(prev => ({
+      ...prev,
+      [type]: { ...prev[type], [field]: value }
+    }));
+  };
+
+  const handleSave = async (e) => {
+    e.preventDefault();
+    setSaving(true);
+    setSaved(false);
+    try {
+      await saveConfig({ baseUrl: baseUrl.trim().replace(/\/$/, ''), types });
+      setSaved(true);
+      setTimeout(() => setSaved(false), 3000);
+    } catch (err) {
+      alert(err.message);
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  if (loading) return <div className="p-12 text-center text-gray-500 animate-pulse">Loading config...</div>;
+
+  return (
+    <div className="max-w-4xl mx-auto p-8 space-y-8">
+      <div>
+        <h2 className="text-2xl font-bold text-gray-900">Cấu hình Tem QR</h2>
+        <p className="text-gray-500 mt-1">Cấu hình cấu trúc serial và URL được mã hóa vào QR theo từng loại tem.</p>
+      </div>
+
+      <form onSubmit={handleSave} className="space-y-6">
+        {/* Base URL */}
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+          <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">Base URL (Domain)</h3>
+          <input
+            type="url"
+            value={baseUrl}
+            onChange={e => setBaseUrl(e.target.value)}
+            placeholder="https://traceviet.intrustdss.vn"
+            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-500 font-mono text-sm text-gray-800"
+            required
+          />
+        </div>
+
+        {/* Per-type config */}
+        {Object.entries(types).map(([type, cfg]) => {
+          const serial = buildSerialPreview(cfg);
+          const url = (baseUrl || '<domain>') + cfg.urlPath + serial;
+          return (
+            <div key={type} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+              <div className="flex items-center gap-3 px-6 py-4 bg-gray-50 border-b border-gray-100">
+                <span className="bg-green-100 text-green-700 px-2.5 py-1 rounded-md text-xs font-bold">{type}</span>
+                <span className="font-semibold text-gray-700 text-sm">{cfg.name}</span>
+              </div>
+
+              <div className="p-6 space-y-4">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  {FIELD_META.map(({ key, label, type: ftype, placeholder }) => (
+                    <div key={key}>
+                      <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">{label}</label>
+                      <input
+                        type={ftype}
+                        value={cfg[key] ?? ''}
+                        min={ftype === 'number' ? 0 : undefined}
+                        onChange={e => setField(type, key, ftype === 'number' ? parseInt(e.target.value, 10) || 0 : e.target.value)}
+                        placeholder={placeholder}
+                        className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-green-500 font-mono text-sm text-gray-800"
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                {/* Preview */}
+                <div className="bg-blue-50 rounded-xl border border-blue-100 px-4 py-3 space-y-1">
+                  <p className="text-xs font-semibold text-blue-600 uppercase tracking-wider">Preview</p>
+                  <p className="font-mono text-sm text-blue-900 font-bold">{serial}</p>
+                  <p className="font-mono text-xs text-blue-700 break-all">{url}</p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+
+        <div className="flex items-center gap-4 pb-4">
+          <button
+            type="submit"
+            disabled={saving}
+            className="bg-green-600 hover:bg-green-700 text-white font-bold px-8 py-3 rounded-xl transition-all shadow-md hover:shadow-lg disabled:opacity-70"
+          >
+            {saving ? <span className="animate-pulse">Đang lưu...</span> : 'Lưu cấu hình'}
+          </button>
+          {saved && (
+            <span className="flex items-center gap-1.5 text-green-600 font-medium text-sm">
+              <CheckCircle size={16} /> Đã lưu thành công
+            </span>
+          )}
+        </div>
+      </form>
     </div>
   );
 }

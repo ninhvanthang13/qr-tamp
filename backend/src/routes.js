@@ -3,11 +3,35 @@ const express = require('express');
 const router  = express.Router();
 const gen     = require('./serialGen');
 const store   = require('./store');
-const { STAMP_CONFIG } = require('./stampConfig');
 
-// GET /api/config
-router.get('/config', (req, res) => {
-  res.json(STAMP_CONFIG);
+// GET /api/config  — returns effective stamp type config (flat, keyed by type + baseUrl at root)
+router.get('/config', (_req, res) => {
+  res.json(gen.getEffectiveFlatConfig());
+});
+
+// PUT /api/config  — saves overrides for baseUrl and/or per-type params
+router.put('/config', (req, res) => {
+  const { baseUrl, types } = req.body;
+  if (!baseUrl || typeof baseUrl !== 'string') {
+    return res.status(400).json({ error: 'baseUrl is required' });
+  }
+  if (!types || typeof types !== 'object') {
+    return res.status(400).json({ error: 'types is required' });
+  }
+  // Sanitize: only keep known numeric/string fields per type
+  const sanitized = {};
+  for (const [key, val] of Object.entries(types)) {
+    sanitized[key] = {
+      name:           String(val.name || ''),
+      urlPath:        String(val.urlPath || '/'),
+      prefix:         String(val.prefix || ''),
+      productCodeLen: parseInt(val.productCodeLen, 10) || 0,
+      letterCount:    parseInt(val.letterCount, 10) || 0,
+      digitCount:     Math.max(1, parseInt(val.digitCount, 10) || 5),
+    };
+  }
+  store.saveStampTypeConfig({ baseUrl: baseUrl.trim().replace(/\/$/, ''), types: sanitized });
+  res.json({ ok: true });
 });
 
 // GET /api/state?type=CONG&year=26&productCode=PLM
@@ -21,11 +45,11 @@ router.get('/state', (req, res) => {
 router.post('/generate', (req, res) => {
   const { type, year, productCode = '', lPos, counter, qty, generatedBy = 'admin' } = req.body;
 
+  const cfg = gen.getEffectiveFlatConfig();
+  if (!cfg[type]) return res.status(400).json({ error: 'Invalid stamp type' });
+
   if (!type || !year || !qty || qty < 1 || qty > 50000) {
     return res.status(400).json({ error: 'Invalid request. qty must be 1–50000.' });
-  }
-  if (!STAMP_CONFIG[type]) {
-    return res.status(400).json({ error: 'Invalid stamp type' });
   }
 
   const pc    = (productCode || '').toUpperCase();
@@ -63,7 +87,7 @@ router.post('/generate', (req, res) => {
 });
 
 // GET /api/batches
-router.get('/batches', (req, res) => {
+router.get('/batches', (_req, res) => {
   res.json(store.getBatches());
 });
 
@@ -101,7 +125,7 @@ router.get('/export/csv/:batchId', (req, res) => {
 
   res.setHeader('Content-Type', 'text/csv; charset=utf-8');
   res.setHeader('Content-Disposition', `attachment; filename="batch-${batch.id}.csv"`);
-  res.send('﻿' + rows); // BOM for Excel
+  res.send('﻿' + rows);
 });
 
 module.exports = router;

@@ -76,4 +76,21 @@ function searchSerials({ query = '', type, limit = 50 }) {
     .map(([serial, v]) => ({ serial, ...v }));
 }
 
-module.exports = { getState, setState, addBatch, getBatches, getBatchById, findSerial, searchSerials };
+// ── Stamp Type Config ──────────────────────────────────────────────────────────
+// Stores: { baseUrl, types: { CONG: { name, urlPath, prefix, productCodeLen, letterCount, digitCount }, ... } }
+const TYPE_CONFIG_FILE = path.join(DATA_DIR, 'stampTypeConfig.json');
+
+function getStampTypeConfig() {
+  try {
+    return JSON.parse(fs.readFileSync(TYPE_CONFIG_FILE, 'utf8'));
+  } catch {
+    return null; // null → use defaults from stampConfig.js
+  }
+}
+
+function saveStampTypeConfig(config) {
+  if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
+  fs.writeFileSync(TYPE_CONFIG_FILE, JSON.stringify(config, null, 2), 'utf8');
+}
+
+module.exports = { getState, setState, addBatch, getBatches, getBatchById, findSerial, searchSerials, getStampTypeConfig, saveStampTypeConfig };

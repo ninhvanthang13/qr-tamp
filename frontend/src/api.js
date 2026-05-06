@@ -14,6 +14,7 @@ async function req(path, opts = {}) {
 }
 
 export const getConfig   = () => req('/config');
+export const saveConfig  = (cfg) => req('/config', { method: 'PUT', body: cfg });
 
 export const getState    = (type, year, productCode = '') =>
   req(`/state?type=${type}&year=${year}&productCode=${productCode}`);
