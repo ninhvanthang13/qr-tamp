@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { getState, generateBatch, getBatches, searchSerials, csvExportUrl, verifySerial } from './api';
+import { getConfig, getState, generateBatch, getBatches, searchSerials, csvExportUrl, verifySerial } from './api';
 import StampStrip from './components/StampStrip';
 import QRCode from 'qrcode';
 import JSZip from 'jszip';
@@ -73,6 +73,12 @@ function GeneratorTab() {
   
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
+  const [stampConfig, setStampConfig] = useState(null);
+
+  // Fetch config on mount
+  useEffect(() => {
+    getConfig().then(setStampConfig).catch(console.error);
+  }, []);
 
   // Auto-fetch next sequence
   useEffect(() => {
@@ -84,10 +90,13 @@ function GeneratorTab() {
         console.error('State fetch error', err);
       }
     };
-    if (form.type && form.year && (form.type === 'THUNG' || form.productCode.length === 3)) {
-      fetchState();
+    if (form.type && form.year && stampConfig && stampConfig[form.type]) {
+      const config = stampConfig[form.type];
+      if (config.productCodeLen === 0 || form.productCode.length === config.productCodeLen) {
+        fetchState();
+      }
     }
-  }, [form.type, form.year, form.productCode]);
+  }, [form.type, form.year, form.productCode, stampConfig]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -131,9 +140,9 @@ function GeneratorTab() {
               <div>
                 <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Stamp Type</label>
                 <select name="type" value={form.type} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-500 transition-all font-medium text-gray-700">
-                  <option value="SAN_PHAM">Sản phẩm (Product)</option>
-                  <option value="THUNG">Thùng (Box)</option>
-                  <option value="CONG">Công (Container)</option>
+                  {stampConfig ? Object.entries(stampConfig).map(([key, config]) => (
+                    <option key={key} value={key}>{config.name} ({key})</option>
+                  )) : <option value={form.type}>Loading...</option>}
                 </select>
               </div>
               <div>
@@ -145,7 +154,7 @@ function GeneratorTab() {
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Product Code</label>
-                <input name="productCode" value={form.productCode} onChange={handleChange} disabled={form.type === 'THUNG'} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-500 transition-all font-medium text-gray-700 disabled:opacity-50" maxLength="3" />
+                <input name="productCode" value={form.productCode} onChange={handleChange} disabled={stampConfig && stampConfig[form.type] && stampConfig[form.type].productCodeLen === 0} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-500 transition-all font-medium text-gray-700 disabled:opacity-50" maxLength={stampConfig && stampConfig[form.type] ? stampConfig[form.type].productCodeLen || 3 : 3} />
               </div>
               <div>
                 <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Quantity</label>

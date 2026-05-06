@@ -13,6 +13,8 @@ async function req(path, opts = {}) {
   return r.json();
 }
 
+export const getConfig   = () => req('/config');
+
 export const getState    = (type, year, productCode = '') =>
   req(`/state?type=${type}&year=${year}&productCode=${productCode}`);
 

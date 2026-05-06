@@ -3,6 +3,12 @@ const express = require('express');
 const router  = express.Router();
 const gen     = require('./serialGen');
 const store   = require('./store');
+const { STAMP_CONFIG } = require('./stampConfig');
+
+// GET /api/config
+router.get('/config', (req, res) => {
+  res.json(STAMP_CONFIG);
+});
 
 // GET /api/state?type=CONG&year=26&productCode=PLM
 router.get('/state', (req, res) => {
@@ -18,7 +24,7 @@ router.post('/generate', (req, res) => {
   if (!type || !year || !qty || qty < 1 || qty > 50000) {
     return res.status(400).json({ error: 'Invalid request. qty must be 1–50000.' });
   }
-  if (!['CONG', 'THUNG', 'SAN_PHAM'].includes(type)) {
+  if (!STAMP_CONFIG[type]) {
     return res.status(400).json({ error: 'Invalid stamp type' });
   }
 
