@@ -9,7 +9,9 @@
     "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
     "start": "concurrently -n \"API,UI\" -c \"cyan,magenta\" \"npm run start:backend\" \"npm run start:frontend\"",
     "start:backend": "cd backend && npm start",
-    "start:frontend": "cd frontend && npm run preview"
+    "start:frontend": "cd frontend && npm run preview",
+    "build": "npm run build:frontend",
+    "build:frontend": "cd frontend && npm run build"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
