@@ -5,7 +5,9 @@ const store   = require('./store');
 const routes  = require('./routes');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'https://qr-stamp-frontend.onrender.com' // Cho phép Frontend này truy cập
+}));
 app.use(express.json());
 
 app.use('/api', routes);
