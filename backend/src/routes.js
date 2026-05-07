@@ -25,6 +25,7 @@ router.put('/config', (req, res) => {
       name:           String(val.name || ''),
       urlPath:        String(val.urlPath || '/'),
       prefix:         String(val.prefix || ''),
+      year:           String(val.year || ''),
       productCodeLen: parseInt(val.productCodeLen, 10) || 0,
       letterCount:    parseInt(val.letterCount, 10) || 0,
       digitCount:     Math.max(1, parseInt(val.digitCount, 10) || 5),
@@ -43,7 +44,7 @@ router.get('/state', (req, res) => {
 
 // POST /api/generate
 router.post('/generate', (req, res) => {
-  const { type, year, productCode = '', lPos, counter, qty, generatedBy = 'admin' } = req.body;
+  const { type, prefix, year, productCode = '', lPos, counter, qty, generatedBy = 'admin' } = req.body;
 
   const cfg = gen.getEffectiveFlatConfig();
   if (!cfg[type]) return res.status(400).json({ error: 'Invalid stamp type' });
@@ -59,7 +60,7 @@ router.post('/generate', (req, res) => {
 
   try {
     const result = gen.generateBatch({
-      type, year: parseInt(year), productCode: pc,
+      type, prefix, year: parseInt(year), productCode: pc,
       lPos: startLPos, counter: startCounter, qty: parseInt(qty)
     });
 

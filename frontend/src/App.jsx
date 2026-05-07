@@ -4,7 +4,7 @@ import StampStrip from './components/StampStrip';
 import QRCode from 'qrcode';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
-import { QrCode, ClipboardList, Search, Download, Printer, Box, Layers, Play, CheckCircle, XCircle, Settings, FileText } from 'lucide-react';
+import { QrCode, ClipboardList, Search, Download, Printer, Box, Layers, Play, CheckCircle, XCircle, Settings, FileText, LayoutGrid, List } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('generator');
@@ -64,6 +64,7 @@ function NavItem({ icon, label, active, onClick }) {
 function GeneratorTab() {
   const [form, setForm] = useState({
     type: 'SAN_PHAM',
+    prefix: '',
     year: new Date().getFullYear().toString().slice(-2),
     productCode: 'PLM',
     qty: 1,
@@ -71,11 +72,14 @@ function GeneratorTab() {
     counter: 0,
     productLabel: 'BƯỞI BẾN TRE',
     variant: 'regular',
+    bgImage: null,
   });
   
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [stampConfig, setStampConfig] = useState(null);
+  const [viewMode, setViewMode] = useState('grid');
+  const [previewLimit, setPreviewLimit] = useState(50);
 
   // Fetch config on mount
   useEffect(() => {
@@ -105,6 +109,30 @@ function GeneratorTab() {
     setForm(f => ({ ...f, [name]: value }));
   };
 
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        setForm(f => ({ ...f, bgImage: ev.target.result }));
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setForm(f => ({ ...f, bgImage: null }));
+    }
+  };
+
+  // Sync prefix and year when type changes
+  useEffect(() => {
+    if (stampConfig && stampConfig[form.type]) {
+      setForm(f => ({
+        ...f,
+        prefix: stampConfig[form.type].prefix || '',
+        year: stampConfig[form.type].year || new Date().getFullYear().toString().slice(-2)
+      }));
+    }
+  }, [form.type, stampConfig]);
+
   const handleGenerate = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -112,6 +140,7 @@ function GeneratorTab() {
     try {
       const res = await generateBatch({
         type: form.type,
+        prefix: form.prefix,
         year: form.year,
         productCode: form.productCode,
         qty: parseInt(form.qty, 10),
@@ -119,6 +148,7 @@ function GeneratorTab() {
         counter: parseInt(form.counter, 10)
       });
       setResult(res);
+      setPreviewLimit(50); // Reset preview limit for new batch
       // Update form to next state
       setForm(f => ({ ...f, lPos: res.nextLPos, counter: res.nextCounter }));
     } catch (err) {
@@ -148,19 +178,34 @@ function GeneratorTab() {
                 </select>
               </div>
               <div>
+                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Product Label</label>
+                <input name="productLabel" value={form.productLabel} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-500 transition-all font-medium text-gray-700" />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-3 gap-4">
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Prefix</label>
+                <input name="prefix" value={form.prefix} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-500 transition-all font-medium text-gray-700" />
+              </div>
+              <div>
                 <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Year (YY)</label>
                 <input name="year" value={form.year} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-500 transition-all font-medium text-gray-700" maxLength="2" />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Product Code</label>
+                <input name="productCode" value={form.productCode} onChange={handleChange} disabled={stampConfig && stampConfig[form.type] && stampConfig[form.type].productCodeLen === 0} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-500 transition-all font-medium text-gray-700 disabled:opacity-50" maxLength={stampConfig && stampConfig[form.type] ? stampConfig[form.type].productCodeLen || 3 : 3} />
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Product Code</label>
-                <input name="productCode" value={form.productCode} onChange={handleChange} disabled={stampConfig && stampConfig[form.type] && stampConfig[form.type].productCodeLen === 0} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-500 transition-all font-medium text-gray-700 disabled:opacity-50" maxLength={stampConfig && stampConfig[form.type] ? stampConfig[form.type].productCodeLen || 3 : 3} />
-              </div>
-              <div>
                 <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Quantity</label>
                 <input name="qty" type="number" min="1" max="50000" value={form.qty} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-500 transition-all font-medium text-gray-700" />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Background Image</label>
+                <input type="file" accept="image/*" onChange={handleImageUpload} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-green-500 transition-all font-medium text-gray-700 text-sm file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100" />
               </div>
             </div>
             
@@ -185,12 +230,13 @@ function GeneratorTab() {
           {/* Preview Panel */}
           <div className="bg-gray-50 p-8 border-l border-gray-100 flex flex-col justify-center items-center">
             <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-6 w-full text-left">Live Preview</h3>
-            <div className="transform scale-[0.65] md:scale-[0.8] origin-top">
+            <div className="w-full max-w-lg [&>div]:w-full [&_svg]:w-full [&_svg]:h-auto flex justify-center">
               <StampStrip 
-                serial="C26PLMA00003" 
-                url="https://traceviet.intrustdss.vn/2/C26PLMA00003"
-                productLabel={form.productCode || 'PRODUCT'}
+                serial={((form.prefix || '') + (form.year || '') + (form.productCode || '') + 'A00001').slice(0, 12)} 
+                url={`https://traceviet.intrustdss.vn/2/${form.prefix || ''}${form.year || ''}${form.productCode || ''}A00001`}
+                productLabel={form.productLabel || 'PRODUCT'}
                 variant={form.variant}
+                bgImage={form.bgImage}
               />
             </div>
             <div className="mt-8 w-full">
@@ -217,6 +263,10 @@ function GeneratorTab() {
               </div>
             </div>
             <div className="flex space-x-3">
+              <div className="flex bg-gray-100 p-1 rounded-lg">
+                <button onClick={() => setViewMode('grid')} className={`flex items-center space-x-1.5 px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${viewMode === 'grid' ? 'bg-white shadow-sm text-gray-800' : 'text-gray-500 hover:text-gray-700'}`}><LayoutGrid size={14} /> <span>Grid</span></button>
+                <button onClick={() => setViewMode('table')} className={`flex items-center space-x-1.5 px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${viewMode === 'table' ? 'bg-white shadow-sm text-gray-800' : 'text-gray-500 hover:text-gray-700'}`}><List size={14} /> <span>Table</span></button>
+              </div>
               <a href={csvExportUrl(result.batchId)} target="_blank" rel="noreferrer" className="flex items-center space-x-2 bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm">
                 <Download size={16} /> <span>CSV</span>
               </a>
@@ -226,33 +276,61 @@ function GeneratorTab() {
             </div>
           </div>
 
-          <div className="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
-             <table className="w-full text-left text-sm text-gray-600">
-                <thead className="bg-gray-100 text-xs uppercase font-semibold text-gray-500">
-                  <tr>
-                    <th className="px-6 py-3">#</th>
-                    <th className="px-6 py-3">Serial</th>
-                    <th className="px-6 py-3">Full URL</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200 font-mono">
-                  {result.items.slice(0, 10).map((item, i) => (
-                    <tr key={item.serial} className="hover:bg-white">
-                      <td className="px-6 py-3 text-gray-400">{i + 1}</td>
-                      <td className="px-6 py-3 font-semibold text-gray-900">{item.serial}</td>
-                      <td className="px-6 py-3 text-xs">{item.url}</td>
-                    </tr>
-                  ))}
-                  {result.items.length > 10 && (
+          {viewMode === 'table' ? (
+            <div className="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
+               <table className="w-full text-left text-sm text-gray-600">
+                  <thead className="bg-gray-100 text-xs uppercase font-semibold text-gray-500">
                     <tr>
-                      <td colSpan="3" className="px-6 py-4 text-center text-gray-500 font-sans italic text-xs">
-                        ... and {result.items.length - 10} more items
-                      </td>
+                      <th className="px-6 py-3">#</th>
+                      <th className="px-6 py-3">Serial</th>
+                      <th className="px-6 py-3">Full URL</th>
                     </tr>
-                  )}
-                </tbody>
-             </table>
-          </div>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200 font-mono">
+                    {result.items.slice(0, previewLimit).map((item, i) => (
+                      <tr key={item.serial} className="hover:bg-white">
+                        <td className="px-6 py-3 text-gray-400">{i + 1}</td>
+                        <td className="px-6 py-3 font-semibold text-gray-900">{item.serial}</td>
+                        <td className="px-6 py-3 text-xs">{item.url}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+               </table>
+               {result.items.length > previewLimit && (
+                 <div className="p-4 bg-white border-t border-gray-200 flex justify-center space-x-4">
+                   <button onClick={() => setPreviewLimit(p => p + 50)} className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-sm font-medium transition-colors">Tải thêm 50</button>
+                   <button onClick={() => setPreviewLimit(result.items.length)} className="px-4 py-2 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg text-sm font-medium transition-colors">Hiển thị tất cả ({result.items.length})</button>
+                 </div>
+               )}
+            </div>
+          ) : (
+            <div className="bg-gray-50/80 rounded-xl border border-gray-200 p-6 overflow-hidden">
+               <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-6">
+                 {result.items.slice(0, previewLimit).map((item, i) => (
+                   <div key={item.serial} className="flex flex-col items-center group bg-white p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                      <div className="w-full overflow-hidden flex justify-center [&>div]:w-full [&_svg]:w-full [&_svg]:h-auto">
+                         <StampStrip 
+                           serial={item.serial} 
+                           url={item.url}
+                           productLabel={form.productLabel || 'PRODUCT'}
+                           variant={form.variant}
+                           bgImage={form.bgImage}
+                         />
+                      </div>
+                      <div className="mt-4 px-3 py-1.5 bg-gray-50 rounded-lg border border-gray-100 text-sm font-mono font-bold text-gray-700 group-hover:text-green-600 transition-colors w-full text-center">
+                         {item.serial}
+                      </div>
+                   </div>
+                 ))}
+               </div>
+               {result.items.length > previewLimit && (
+                 <div className="mt-8 flex justify-center space-x-4">
+                   <button onClick={() => setPreviewLimit(p => p + 50)} className="px-6 py-2.5 bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 rounded-xl text-sm font-medium transition-colors shadow-sm">Tải thêm 50 tem</button>
+                   <button onClick={() => setPreviewLimit(result.items.length)} className="px-6 py-2.5 bg-green-50 border border-green-100 hover:bg-green-100 text-green-700 rounded-xl text-sm font-medium transition-colors shadow-sm">Hiển thị tất cả ({result.items.length})</button>
+                 </div>
+               )}
+            </div>
+          )}
           
           {/* Print container (Hidden in screen, visible in print) */}
           <div className="hidden print:block absolute top-0 left-0 w-full bg-white z-50 p-4">
@@ -262,8 +340,9 @@ function GeneratorTab() {
                    <StampStrip 
                      serial={item.serial} 
                      url={item.url}
-                     productLabel={form.productCode || 'PRODUCT'}
+                     productLabel={form.productLabel || 'PRODUCT'}
                      variant={form.variant}
+                     bgImage={form.bgImage}
                    />
                  </div>
                ))}
@@ -378,13 +457,14 @@ const FIELD_META = [
   { key: 'name',           label: 'Tên hiển thị',      type: 'text',   placeholder: 'Ví dụ: Sản phẩm' },
   { key: 'urlPath',        label: 'URL Path',           type: 'text',   placeholder: '/02/' },
   { key: 'prefix',        label: 'Tiền tố (Prefix)',   type: 'text',   placeholder: 'C hoặc để trống' },
+  { key: 'year',          label: 'Năm (YY)',           type: 'text',   placeholder: 'Ví dụ: 26' },
   { key: 'productCodeLen', label: 'Độ dài Mã SP (SSS)', type: 'number', placeholder: '3 (0 = không dùng)' },
   { key: 'letterCount',   label: 'Số chữ cái (A→Z)',   type: 'number', placeholder: '1 hoặc 2' },
   { key: 'digitCount',    label: 'Số chữ số cuối',     type: 'number', placeholder: '5' },
 ];
 
 function buildSerialPreview(cfg, sampleProduct = 'PLM') {
-  const yy = '26';
+  const yy = cfg.year || new Date().getFullYear().toString().slice(-2);
   const prefix = cfg.prefix || '';
   const pc = cfg.productCodeLen > 0 ? (sampleProduct + 'AAA').slice(0, cfg.productCodeLen) : '';
   const letters = cfg.letterCount === 1 ? 'A' : cfg.letterCount === 2 ? 'AA' : '';
@@ -413,6 +493,7 @@ function UrlConfigTab() {
           name: v.name || '',
           urlPath: v.urlPath || '/',
           prefix: v.prefix || '',
+          year: v.year || '',
           productCodeLen: v.productCodeLen ?? 0,
           letterCount: v.letterCount ?? 1,
           digitCount: v.digitCount ?? 5,

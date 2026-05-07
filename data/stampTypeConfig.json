@@ -1,0 +1,32 @@
+{
+  "baseUrl": "https://traceviet.intrustdss.vn",
+  "types": {
+    "CONG": {
+      "name": "Công",
+      "urlPath": "/2/",
+      "prefix": "C",
+      "year": "",
+      "productCodeLen": 3,
+      "letterCount": 1,
+      "digitCount": 5
+    },
+    "THUNG": {
+      "name": "Thùng",
+      "urlPath": "/1/",
+      "prefix": "T",
+      "year": "",
+      "productCodeLen": 0,
+      "letterCount": 2,
+      "digitCount": 7
+    },
+    "SAN_PHAM": {
+      "name": "Sản phẩm",
+      "urlPath": "/02/",
+      "prefix": "",
+      "year": "",
+      "productCodeLen": 0,
+      "letterCount": 2,
+      "digitCount": 8
+    }
+  }
+}

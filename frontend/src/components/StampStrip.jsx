@@ -117,7 +117,7 @@ function CMYKSwatches({ x, y }) {
 
 // ── Main stamp strip component ────────────────────────────────────────────────
 const StampStrip = forwardRef(function StampStrip(
-  { serial, url, variant = 'regular', productLabel = 'BƯỞi BẾN TRE', productCode = '', year = '', compact = false },
+  { serial, url, variant = 'regular', productLabel = 'BƯỞi BẾN TRE', productCode = '', year = '', compact = false, bgImage = null },
   ref
 ) {
   const [qrLeft,  setQrLeft]  = useState('');
@@ -144,7 +144,11 @@ const StampStrip = forwardRef(function StampStrip(
             </clipPath>
           </defs>
           {/* Background */}
-          <rect width="152" height="152" fill="#e8f5e8" rx="4" />
+          {bgImage ? (
+            <image href={bgImage} x="0" y="0" width="152" height="152" preserveAspectRatio="xMidYMid slice" clipPath="url(#compact-clip)" />
+          ) : (
+            <rect width="152" height="152" fill="#e8f5e8" rx="4" />
+          )}
           {/* Guilloché (clipped subset) */}
           <g clipPath="url(#compact-clip)" opacity="0.7">
             {GUILLOCHE.map((l, i) => (
@@ -187,7 +191,11 @@ const StampStrip = forwardRef(function StampStrip(
         </defs>
 
         {/* ── Strip background ──────────────────────────────────────────── */}
-        <rect width={W} height={H} fill="#e8f5e8" rx="4" />
+        {bgImage ? (
+          <image href={bgImage} x="0" y="0" width={W} height={H} preserveAspectRatio="xMidYMid slice" clipPath="url(#strip-clip)" />
+        ) : (
+          <rect width={W} height={H} fill="#e8f5e8" rx="4" />
+        )}
 
         {/* ── Guilloché wave lines ──────────────────────────────────────── */}
         <g clipPath="url(#strip-clip)">

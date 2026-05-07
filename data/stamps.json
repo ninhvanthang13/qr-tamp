@@ -2,13 +2,18 @@
   "states": {
     "SAN_PHAM:26:PLM": {
       "lPos": 0,
-      "counter": 2003,
-      "updatedAt": "2026-05-06T15:10:46.949Z"
+      "counter": 213,
+      "updatedAt": "2026-05-07T01:27:24.788Z"
     },
     "CONG:26:PLM": {
       "lPos": 0,
       "counter": 100,
       "updatedAt": "2026-05-06T15:21:03.290Z"
+    },
+    "CONG:26:": {
+      "lPos": 0,
+      "counter": 101,
+      "updatedAt": "2026-05-07T01:20:26.818Z"
     }
   },
   "batches": [
@@ -4505,6 +4510,1004 @@
         }
       ],
       "createdAt": "2026-05-06T15:21:03.285Z"
+    },
+    {
+      "id": 7,
+      "type": "SAN_PHAM",
+      "year": 26,
+      "productCode": "PLM",
+      "qty": 1,
+      "fromSerial": "26PLMAA02003",
+      "toSerial": "26PLMAA02003",
+      "generatedBy": "admin",
+      "items": [
+        {
+          "serial": "26PLMAA02003",
+          "url": "https://traceviet.intrustdss.vn/02/26PLMAA02003"
+        }
+      ],
+      "createdAt": "2026-05-07T01:17:50.623Z"
+    },
+    {
+      "id": 8,
+      "type": "CONG",
+      "year": 26,
+      "productCode": "",
+      "qty": 1,
+      "fromSerial": "C26AAAA00100",
+      "toSerial": "C26AAAA00100",
+      "generatedBy": "admin",
+      "items": [
+        {
+          "serial": "C26AAAA00100",
+          "url": "https://traceviet.intrustdss.vn/2/C26AAAA00100"
+        }
+      ],
+      "createdAt": "2026-05-07T01:20:26.806Z"
+    },
+    {
+      "id": 9,
+      "type": "SAN_PHAM",
+      "year": 26,
+      "productCode": "PLM",
+      "qty": 1,
+      "fromSerial": "26AA0002004",
+      "toSerial": "26AA0002004",
+      "generatedBy": "admin",
+      "items": [
+        {
+          "serial": "26AA0002004",
+          "url": "https://traceviet.intrustdss.vn/02/26AA0002004"
+        }
+      ],
+      "createdAt": "2026-05-07T01:21:30.289Z"
+    },
+    {
+      "id": 10,
+      "type": "SAN_PHAM",
+      "year": 26,
+      "productCode": "PLM",
+      "qty": 1,
+      "fromSerial": "26AA00002005",
+      "toSerial": "26AA00002005",
+      "generatedBy": "admin",
+      "items": [
+        {
+          "serial": "26AA00002005",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00002005"
+        }
+      ],
+      "createdAt": "2026-05-07T01:22:04.793Z"
+    },
+    {
+      "id": 11,
+      "type": "SAN_PHAM",
+      "year": 26,
+      "productCode": "PLM",
+      "qty": 1,
+      "fromSerial": "26AA00000000",
+      "toSerial": "26AA00000000",
+      "generatedBy": "admin",
+      "items": [
+        {
+          "serial": "26AA00000000",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000000"
+        }
+      ],
+      "createdAt": "2026-05-07T01:22:13.766Z"
+    },
+    {
+      "id": 12,
+      "type": "SAN_PHAM",
+      "year": 26,
+      "productCode": "PLM",
+      "qty": 1,
+      "fromSerial": "26AA00000001",
+      "toSerial": "26AA00000001",
+      "generatedBy": "admin",
+      "items": [
+        {
+          "serial": "26AA00000001",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000001"
+        }
+      ],
+      "createdAt": "2026-05-07T01:24:37.788Z"
+    },
+    {
+      "id": 13,
+      "type": "SAN_PHAM",
+      "year": 26,
+      "productCode": "PLM",
+      "qty": 100,
+      "fromSerial": "26AA00000002",
+      "toSerial": "26AA00000101",
+      "generatedBy": "admin",
+      "items": [
+        {
+          "serial": "26AA00000002",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000002"
+        },
+        {
+          "serial": "26AA00000003",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000003"
+        },
+        {
+          "serial": "26AA00000004",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000004"
+        },
+        {
+          "serial": "26AA00000005",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000005"
+        },
+        {
+          "serial": "26AA00000006",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000006"
+        },
+        {
+          "serial": "26AA00000007",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000007"
+        },
+        {
+          "serial": "26AA00000008",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000008"
+        },
+        {
+          "serial": "26AA00000009",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000009"
+        },
+        {
+          "serial": "26AA00000010",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000010"
+        },
+        {
+          "serial": "26AA00000011",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000011"
+        },
+        {
+          "serial": "26AA00000012",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000012"
+        },
+        {
+          "serial": "26AA00000013",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000013"
+        },
+        {
+          "serial": "26AA00000014",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000014"
+        },
+        {
+          "serial": "26AA00000015",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000015"
+        },
+        {
+          "serial": "26AA00000016",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000016"
+        },
+        {
+          "serial": "26AA00000017",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000017"
+        },
+        {
+          "serial": "26AA00000018",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000018"
+        },
+        {
+          "serial": "26AA00000019",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000019"
+        },
+        {
+          "serial": "26AA00000020",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000020"
+        },
+        {
+          "serial": "26AA00000021",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000021"
+        },
+        {
+          "serial": "26AA00000022",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000022"
+        },
+        {
+          "serial": "26AA00000023",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000023"
+        },
+        {
+          "serial": "26AA00000024",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000024"
+        },
+        {
+          "serial": "26AA00000025",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000025"
+        },
+        {
+          "serial": "26AA00000026",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000026"
+        },
+        {
+          "serial": "26AA00000027",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000027"
+        },
+        {
+          "serial": "26AA00000028",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000028"
+        },
+        {
+          "serial": "26AA00000029",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000029"
+        },
+        {
+          "serial": "26AA00000030",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000030"
+        },
+        {
+          "serial": "26AA00000031",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000031"
+        },
+        {
+          "serial": "26AA00000032",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000032"
+        },
+        {
+          "serial": "26AA00000033",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000033"
+        },
+        {
+          "serial": "26AA00000034",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000034"
+        },
+        {
+          "serial": "26AA00000035",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000035"
+        },
+        {
+          "serial": "26AA00000036",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000036"
+        },
+        {
+          "serial": "26AA00000037",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000037"
+        },
+        {
+          "serial": "26AA00000038",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000038"
+        },
+        {
+          "serial": "26AA00000039",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000039"
+        },
+        {
+          "serial": "26AA00000040",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000040"
+        },
+        {
+          "serial": "26AA00000041",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000041"
+        },
+        {
+          "serial": "26AA00000042",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000042"
+        },
+        {
+          "serial": "26AA00000043",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000043"
+        },
+        {
+          "serial": "26AA00000044",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000044"
+        },
+        {
+          "serial": "26AA00000045",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000045"
+        },
+        {
+          "serial": "26AA00000046",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000046"
+        },
+        {
+          "serial": "26AA00000047",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000047"
+        },
+        {
+          "serial": "26AA00000048",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000048"
+        },
+        {
+          "serial": "26AA00000049",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000049"
+        },
+        {
+          "serial": "26AA00000050",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000050"
+        },
+        {
+          "serial": "26AA00000051",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000051"
+        },
+        {
+          "serial": "26AA00000052",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000052"
+        },
+        {
+          "serial": "26AA00000053",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000053"
+        },
+        {
+          "serial": "26AA00000054",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000054"
+        },
+        {
+          "serial": "26AA00000055",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000055"
+        },
+        {
+          "serial": "26AA00000056",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000056"
+        },
+        {
+          "serial": "26AA00000057",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000057"
+        },
+        {
+          "serial": "26AA00000058",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000058"
+        },
+        {
+          "serial": "26AA00000059",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000059"
+        },
+        {
+          "serial": "26AA00000060",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000060"
+        },
+        {
+          "serial": "26AA00000061",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000061"
+        },
+        {
+          "serial": "26AA00000062",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000062"
+        },
+        {
+          "serial": "26AA00000063",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000063"
+        },
+        {
+          "serial": "26AA00000064",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000064"
+        },
+        {
+          "serial": "26AA00000065",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000065"
+        },
+        {
+          "serial": "26AA00000066",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000066"
+        },
+        {
+          "serial": "26AA00000067",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000067"
+        },
+        {
+          "serial": "26AA00000068",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000068"
+        },
+        {
+          "serial": "26AA00000069",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000069"
+        },
+        {
+          "serial": "26AA00000070",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000070"
+        },
+        {
+          "serial": "26AA00000071",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000071"
+        },
+        {
+          "serial": "26AA00000072",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000072"
+        },
+        {
+          "serial": "26AA00000073",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000073"
+        },
+        {
+          "serial": "26AA00000074",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000074"
+        },
+        {
+          "serial": "26AA00000075",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000075"
+        },
+        {
+          "serial": "26AA00000076",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000076"
+        },
+        {
+          "serial": "26AA00000077",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000077"
+        },
+        {
+          "serial": "26AA00000078",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000078"
+        },
+        {
+          "serial": "26AA00000079",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000079"
+        },
+        {
+          "serial": "26AA00000080",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000080"
+        },
+        {
+          "serial": "26AA00000081",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000081"
+        },
+        {
+          "serial": "26AA00000082",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000082"
+        },
+        {
+          "serial": "26AA00000083",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000083"
+        },
+        {
+          "serial": "26AA00000084",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000084"
+        },
+        {
+          "serial": "26AA00000085",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000085"
+        },
+        {
+          "serial": "26AA00000086",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000086"
+        },
+        {
+          "serial": "26AA00000087",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000087"
+        },
+        {
+          "serial": "26AA00000088",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000088"
+        },
+        {
+          "serial": "26AA00000089",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000089"
+        },
+        {
+          "serial": "26AA00000090",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000090"
+        },
+        {
+          "serial": "26AA00000091",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000091"
+        },
+        {
+          "serial": "26AA00000092",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000092"
+        },
+        {
+          "serial": "26AA00000093",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000093"
+        },
+        {
+          "serial": "26AA00000094",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000094"
+        },
+        {
+          "serial": "26AA00000095",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000095"
+        },
+        {
+          "serial": "26AA00000096",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000096"
+        },
+        {
+          "serial": "26AA00000097",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000097"
+        },
+        {
+          "serial": "26AA00000098",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000098"
+        },
+        {
+          "serial": "26AA00000099",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000099"
+        },
+        {
+          "serial": "26AA00000100",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000100"
+        },
+        {
+          "serial": "26AA00000101",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000101"
+        }
+      ],
+      "createdAt": "2026-05-07T01:24:51.600Z"
+    },
+    {
+      "id": 14,
+      "type": "SAN_PHAM",
+      "year": 26,
+      "productCode": "PLM",
+      "qty": 1,
+      "fromSerial": "26AA00000102",
+      "toSerial": "26AA00000102",
+      "generatedBy": "admin",
+      "items": [
+        {
+          "serial": "26AA00000102",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000102"
+        }
+      ],
+      "createdAt": "2026-05-07T01:27:08.641Z"
+    },
+    {
+      "id": 15,
+      "type": "SAN_PHAM",
+      "year": 26,
+      "productCode": "PLM",
+      "qty": 10,
+      "fromSerial": "26AA00000103",
+      "toSerial": "26AA00000112",
+      "generatedBy": "admin",
+      "items": [
+        {
+          "serial": "26AA00000103",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000103"
+        },
+        {
+          "serial": "26AA00000104",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000104"
+        },
+        {
+          "serial": "26AA00000105",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000105"
+        },
+        {
+          "serial": "26AA00000106",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000106"
+        },
+        {
+          "serial": "26AA00000107",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000107"
+        },
+        {
+          "serial": "26AA00000108",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000108"
+        },
+        {
+          "serial": "26AA00000109",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000109"
+        },
+        {
+          "serial": "26AA00000110",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000110"
+        },
+        {
+          "serial": "26AA00000111",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000111"
+        },
+        {
+          "serial": "26AA00000112",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000112"
+        }
+      ],
+      "createdAt": "2026-05-07T01:27:17.530Z"
+    },
+    {
+      "id": 16,
+      "type": "SAN_PHAM",
+      "year": 26,
+      "productCode": "PLM",
+      "qty": 100,
+      "fromSerial": "26AA00000113",
+      "toSerial": "26AA00000212",
+      "generatedBy": "admin",
+      "items": [
+        {
+          "serial": "26AA00000113",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000113"
+        },
+        {
+          "serial": "26AA00000114",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000114"
+        },
+        {
+          "serial": "26AA00000115",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000115"
+        },
+        {
+          "serial": "26AA00000116",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000116"
+        },
+        {
+          "serial": "26AA00000117",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000117"
+        },
+        {
+          "serial": "26AA00000118",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000118"
+        },
+        {
+          "serial": "26AA00000119",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000119"
+        },
+        {
+          "serial": "26AA00000120",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000120"
+        },
+        {
+          "serial": "26AA00000121",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000121"
+        },
+        {
+          "serial": "26AA00000122",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000122"
+        },
+        {
+          "serial": "26AA00000123",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000123"
+        },
+        {
+          "serial": "26AA00000124",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000124"
+        },
+        {
+          "serial": "26AA00000125",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000125"
+        },
+        {
+          "serial": "26AA00000126",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000126"
+        },
+        {
+          "serial": "26AA00000127",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000127"
+        },
+        {
+          "serial": "26AA00000128",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000128"
+        },
+        {
+          "serial": "26AA00000129",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000129"
+        },
+        {
+          "serial": "26AA00000130",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000130"
+        },
+        {
+          "serial": "26AA00000131",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000131"
+        },
+        {
+          "serial": "26AA00000132",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000132"
+        },
+        {
+          "serial": "26AA00000133",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000133"
+        },
+        {
+          "serial": "26AA00000134",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000134"
+        },
+        {
+          "serial": "26AA00000135",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000135"
+        },
+        {
+          "serial": "26AA00000136",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000136"
+        },
+        {
+          "serial": "26AA00000137",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000137"
+        },
+        {
+          "serial": "26AA00000138",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000138"
+        },
+        {
+          "serial": "26AA00000139",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000139"
+        },
+        {
+          "serial": "26AA00000140",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000140"
+        },
+        {
+          "serial": "26AA00000141",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000141"
+        },
+        {
+          "serial": "26AA00000142",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000142"
+        },
+        {
+          "serial": "26AA00000143",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000143"
+        },
+        {
+          "serial": "26AA00000144",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000144"
+        },
+        {
+          "serial": "26AA00000145",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000145"
+        },
+        {
+          "serial": "26AA00000146",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000146"
+        },
+        {
+          "serial": "26AA00000147",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000147"
+        },
+        {
+          "serial": "26AA00000148",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000148"
+        },
+        {
+          "serial": "26AA00000149",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000149"
+        },
+        {
+          "serial": "26AA00000150",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000150"
+        },
+        {
+          "serial": "26AA00000151",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000151"
+        },
+        {
+          "serial": "26AA00000152",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000152"
+        },
+        {
+          "serial": "26AA00000153",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000153"
+        },
+        {
+          "serial": "26AA00000154",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000154"
+        },
+        {
+          "serial": "26AA00000155",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000155"
+        },
+        {
+          "serial": "26AA00000156",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000156"
+        },
+        {
+          "serial": "26AA00000157",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000157"
+        },
+        {
+          "serial": "26AA00000158",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000158"
+        },
+        {
+          "serial": "26AA00000159",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000159"
+        },
+        {
+          "serial": "26AA00000160",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000160"
+        },
+        {
+          "serial": "26AA00000161",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000161"
+        },
+        {
+          "serial": "26AA00000162",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000162"
+        },
+        {
+          "serial": "26AA00000163",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000163"
+        },
+        {
+          "serial": "26AA00000164",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000164"
+        },
+        {
+          "serial": "26AA00000165",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000165"
+        },
+        {
+          "serial": "26AA00000166",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000166"
+        },
+        {
+          "serial": "26AA00000167",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000167"
+        },
+        {
+          "serial": "26AA00000168",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000168"
+        },
+        {
+          "serial": "26AA00000169",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000169"
+        },
+        {
+          "serial": "26AA00000170",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000170"
+        },
+        {
+          "serial": "26AA00000171",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000171"
+        },
+        {
+          "serial": "26AA00000172",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000172"
+        },
+        {
+          "serial": "26AA00000173",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000173"
+        },
+        {
+          "serial": "26AA00000174",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000174"
+        },
+        {
+          "serial": "26AA00000175",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000175"
+        },
+        {
+          "serial": "26AA00000176",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000176"
+        },
+        {
+          "serial": "26AA00000177",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000177"
+        },
+        {
+          "serial": "26AA00000178",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000178"
+        },
+        {
+          "serial": "26AA00000179",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000179"
+        },
+        {
+          "serial": "26AA00000180",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000180"
+        },
+        {
+          "serial": "26AA00000181",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000181"
+        },
+        {
+          "serial": "26AA00000182",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000182"
+        },
+        {
+          "serial": "26AA00000183",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000183"
+        },
+        {
+          "serial": "26AA00000184",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000184"
+        },
+        {
+          "serial": "26AA00000185",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000185"
+        },
+        {
+          "serial": "26AA00000186",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000186"
+        },
+        {
+          "serial": "26AA00000187",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000187"
+        },
+        {
+          "serial": "26AA00000188",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000188"
+        },
+        {
+          "serial": "26AA00000189",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000189"
+        },
+        {
+          "serial": "26AA00000190",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000190"
+        },
+        {
+          "serial": "26AA00000191",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000191"
+        },
+        {
+          "serial": "26AA00000192",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000192"
+        },
+        {
+          "serial": "26AA00000193",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000193"
+        },
+        {
+          "serial": "26AA00000194",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000194"
+        },
+        {
+          "serial": "26AA00000195",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000195"
+        },
+        {
+          "serial": "26AA00000196",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000196"
+        },
+        {
+          "serial": "26AA00000197",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000197"
+        },
+        {
+          "serial": "26AA00000198",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000198"
+        },
+        {
+          "serial": "26AA00000199",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000199"
+        },
+        {
+          "serial": "26AA00000200",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000200"
+        },
+        {
+          "serial": "26AA00000201",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000201"
+        },
+        {
+          "serial": "26AA00000202",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000202"
+        },
+        {
+          "serial": "26AA00000203",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000203"
+        },
+        {
+          "serial": "26AA00000204",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000204"
+        },
+        {
+          "serial": "26AA00000205",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000205"
+        },
+        {
+          "serial": "26AA00000206",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000206"
+        },
+        {
+          "serial": "26AA00000207",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000207"
+        },
+        {
+          "serial": "26AA00000208",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000208"
+        },
+        {
+          "serial": "26AA00000209",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000209"
+        },
+        {
+          "serial": "26AA00000210",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000210"
+        },
+        {
+          "serial": "26AA00000211",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000211"
+        },
+        {
+          "serial": "26AA00000212",
+          "url": "https://traceviet.intrustdss.vn/02/26AA00000212"
+        }
+      ],
+      "createdAt": "2026-05-07T01:27:24.765Z"
     }
   ],
   "serials": {
@@ -13339,7 +14342,1743 @@
       "year": 26,
       "url": "https://traceviet.intrustdss.vn/2/C26PLMA00099",
       "generatedAt": "2026-05-06T15:21:03.285Z"
+    },
+    "26PLMAA02003": {
+      "batchId": 7,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26PLMAA02003",
+      "generatedAt": "2026-05-07T01:17:50.623Z"
+    },
+    "C26AAAA00100": {
+      "batchId": 8,
+      "type": "CONG",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/2/C26AAAA00100",
+      "generatedAt": "2026-05-07T01:20:26.806Z"
+    },
+    "26AA0002004": {
+      "batchId": 9,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA0002004",
+      "generatedAt": "2026-05-07T01:21:30.289Z"
+    },
+    "26AA00002005": {
+      "batchId": 10,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00002005",
+      "generatedAt": "2026-05-07T01:22:04.793Z"
+    },
+    "26AA00000000": {
+      "batchId": 11,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000000",
+      "generatedAt": "2026-05-07T01:22:13.766Z"
+    },
+    "26AA00000001": {
+      "batchId": 12,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000001",
+      "generatedAt": "2026-05-07T01:24:37.788Z"
+    },
+    "26AA00000002": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000002",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000003": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000003",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000004": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000004",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000005": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000005",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000006": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000006",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000007": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000007",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000008": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000008",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000009": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000009",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000010": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000010",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000011": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000011",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000012": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000012",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000013": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000013",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000014": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000014",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000015": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000015",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000016": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000016",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000017": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000017",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000018": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000018",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000019": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000019",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000020": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000020",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000021": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000021",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000022": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000022",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000023": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000023",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000024": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000024",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000025": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000025",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000026": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000026",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000027": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000027",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000028": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000028",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000029": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000029",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000030": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000030",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000031": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000031",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000032": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000032",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000033": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000033",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000034": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000034",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000035": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000035",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000036": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000036",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000037": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000037",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000038": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000038",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000039": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000039",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000040": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000040",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000041": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000041",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000042": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000042",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000043": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000043",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000044": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000044",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000045": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000045",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000046": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000046",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000047": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000047",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000048": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000048",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000049": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000049",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000050": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000050",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000051": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000051",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000052": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000052",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000053": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000053",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000054": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000054",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000055": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000055",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000056": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000056",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000057": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000057",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000058": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000058",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000059": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000059",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000060": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000060",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000061": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000061",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000062": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000062",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000063": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000063",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000064": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000064",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000065": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000065",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000066": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000066",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000067": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000067",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000068": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000068",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000069": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000069",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000070": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000070",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000071": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000071",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000072": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000072",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000073": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000073",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000074": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000074",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000075": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000075",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000076": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000076",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000077": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000077",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000078": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000078",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000079": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000079",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000080": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000080",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000081": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000081",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000082": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000082",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000083": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000083",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000084": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000084",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000085": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000085",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000086": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000086",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000087": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000087",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000088": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000088",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000089": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000089",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000090": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000090",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000091": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000091",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000092": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000092",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000093": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000093",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000094": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000094",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000095": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000095",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000096": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000096",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000097": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000097",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000098": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000098",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000099": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000099",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000100": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000100",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000101": {
+      "batchId": 13,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000101",
+      "generatedAt": "2026-05-07T01:24:51.600Z"
+    },
+    "26AA00000102": {
+      "batchId": 14,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000102",
+      "generatedAt": "2026-05-07T01:27:08.641Z"
+    },
+    "26AA00000103": {
+      "batchId": 15,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000103",
+      "generatedAt": "2026-05-07T01:27:17.530Z"
+    },
+    "26AA00000104": {
+      "batchId": 15,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000104",
+      "generatedAt": "2026-05-07T01:27:17.530Z"
+    },
+    "26AA00000105": {
+      "batchId": 15,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000105",
+      "generatedAt": "2026-05-07T01:27:17.530Z"
+    },
+    "26AA00000106": {
+      "batchId": 15,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000106",
+      "generatedAt": "2026-05-07T01:27:17.530Z"
+    },
+    "26AA00000107": {
+      "batchId": 15,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000107",
+      "generatedAt": "2026-05-07T01:27:17.530Z"
+    },
+    "26AA00000108": {
+      "batchId": 15,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000108",
+      "generatedAt": "2026-05-07T01:27:17.530Z"
+    },
+    "26AA00000109": {
+      "batchId": 15,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000109",
+      "generatedAt": "2026-05-07T01:27:17.530Z"
+    },
+    "26AA00000110": {
+      "batchId": 15,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000110",
+      "generatedAt": "2026-05-07T01:27:17.530Z"
+    },
+    "26AA00000111": {
+      "batchId": 15,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000111",
+      "generatedAt": "2026-05-07T01:27:17.530Z"
+    },
+    "26AA00000112": {
+      "batchId": 15,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000112",
+      "generatedAt": "2026-05-07T01:27:17.530Z"
+    },
+    "26AA00000113": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000113",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000114": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000114",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000115": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000115",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000116": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000116",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000117": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000117",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000118": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000118",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000119": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000119",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000120": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000120",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000121": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000121",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000122": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000122",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000123": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000123",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000124": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000124",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000125": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000125",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000126": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000126",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000127": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000127",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000128": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000128",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000129": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000129",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000130": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000130",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000131": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000131",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000132": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000132",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000133": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000133",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000134": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000134",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000135": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000135",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000136": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000136",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000137": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000137",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000138": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000138",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000139": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000139",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000140": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000140",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000141": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000141",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000142": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000142",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000143": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000143",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000144": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000144",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000145": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000145",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000146": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000146",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000147": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000147",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000148": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000148",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000149": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000149",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000150": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000150",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000151": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000151",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000152": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000152",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000153": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000153",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000154": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000154",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000155": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000155",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000156": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000156",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000157": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000157",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000158": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000158",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000159": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000159",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000160": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000160",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000161": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000161",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000162": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000162",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000163": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000163",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000164": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000164",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000165": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000165",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000166": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000166",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000167": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000167",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000168": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000168",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000169": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000169",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000170": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000170",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000171": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000171",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000172": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000172",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000173": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000173",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000174": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000174",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000175": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000175",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000176": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000176",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000177": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000177",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000178": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000178",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000179": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000179",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000180": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000180",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000181": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000181",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000182": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000182",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000183": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000183",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000184": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000184",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000185": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000185",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000186": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000186",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000187": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000187",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000188": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000188",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000189": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000189",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000190": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000190",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000191": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000191",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000192": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000192",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000193": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000193",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000194": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000194",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000195": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000195",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000196": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000196",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000197": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000197",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000198": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000198",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000199": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000199",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000200": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000200",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000201": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000201",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000202": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000202",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000203": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000203",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000204": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000204",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000205": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000205",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000206": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000206",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000207": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000207",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000208": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000208",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000209": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000209",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000210": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000210",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000211": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000211",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "26AA00000212": {
+      "batchId": 16,
+      "type": "SAN_PHAM",
+      "productCode": "PLM",
+      "year": 26,
+      "url": "https://traceviet.intrustdss.vn/02/26AA00000212",
+      "generatedAt": "2026-05-07T01:27:24.765Z"
     }
   },
-  "nextBatchId": 7
+  "nextBatchId": 17
 }

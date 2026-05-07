@@ -37,6 +37,7 @@ function getEffectiveConfig() {
       name:           (override && override.name           != null) ? override.name           : def.name,
       urlPath:        (override && override.urlPath        != null) ? override.urlPath        : def.urlPath,
       prefix:         (override && override.prefix         != null) ? override.prefix         : def.prefix,
+      year:           (override && override.year           != null) ? override.year           : def.year || '',
       productCodeLen: (override && override.productCodeLen != null) ? override.productCodeLen : def.productCodeLen,
       letterCount:    (override && override.letterCount    != null) ? override.letterCount    : def.letterCount,
       digitCount:     (override && override.digitCount     != null) ? override.digitCount     : def.digitCount,
@@ -100,19 +101,22 @@ function advance(typeCfg, lPos, counter) {
   return { lPos, counter };
 }
 
-function generateBatch({ type, year, productCode = '', lPos = 0, counter = 0, qty }) {
+function generateBatch({ type, prefix, year, productCode = '', lPos = 0, counter = 0, qty }) {
   const { baseUrl, types } = getEffectiveConfig();
   const typeCfg = types[type];
   if (!typeCfg) throw new Error(`Unknown stamp type: ${type}`);
+
+  // Override prefix if provided explicitly
+  const effectiveTypeCfg = { ...typeCfg, prefix: prefix !== undefined ? prefix : typeCfg.prefix };
 
   const items = [];
   let lp = lPos, ct = counter;
 
   for (let i = 0; i < qty; i++) {
-    const serial = makeSerial(typeCfg, year, productCode, lp, ct);
-    const url    = baseUrl + typeCfg.urlPath + serial;
+    const serial = makeSerial(effectiveTypeCfg, year, productCode, lp, ct);
+    const url    = baseUrl + effectiveTypeCfg.urlPath + serial;
     items.push({ serial, url });
-    ({ lPos: lp, counter: ct } = advance(typeCfg, lp, ct));
+    ({ lPos: lp, counter: ct } = advance(effectiveTypeCfg, lp, ct));
   }
 
   return { items, nextLPos: lp, nextCounter: ct };
