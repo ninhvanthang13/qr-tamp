@@ -6,7 +6,7 @@ const routes  = require('./routes');
 
 const app = express();
 app.use(cors({
-  origin: 'https://qr-stamp-backend.onrender.com',
+  origin: '*', // Tạm thời để dấu sao để test xem có chạy không
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
