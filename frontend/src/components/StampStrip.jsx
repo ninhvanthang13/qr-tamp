@@ -1,6 +1,72 @@
-import { useEffect, useRef, useState, forwardRef } from 'react';
+import { useRef, forwardRef, useMemo } from 'react';
 import QRCode from 'qrcode';
 import { buildGuillocheLines } from '../guilloche.js';
+
+function DecorativeQRCode({ url, size = 116 }) {
+  const qrData = useMemo(() => {
+    if (!url) return null;
+    try {
+      const qr = QRCode.create(url, { errorCorrectionLevel: 'H', margin: 1 });
+      const count = qr.modules.size;
+      const cellSize = size / count;
+      const data = qr.modules.data;
+      
+      const cells = [];
+      for (let r = 0; r < count; r++) {
+        for (let c = 0; c < count; c++) {
+          if (data[r * count + c]) {
+            let fill = '#000000';
+            
+            // Calculate distance from center for the diamond
+            const dx = Math.abs(c - count / 2);
+            const dy = Math.abs(r - count / 2);
+            const isDiamond = (dx + dy) <= (count * 0.45);
+
+            if (isDiamond) {
+              fill = '#0066b3'; // Deeper Cyan/Blue
+            } else if (r < count / 2) {
+              fill = '#c4005c'; // Deeper Magenta
+            } else if (c < count / 2) {
+              fill = '#00802b'; // Deeper Green
+            } else {
+              fill = '#cc0000'; // Deeper Red
+            }
+
+            cells.push(
+              <rect
+                key={`${r}-${c}`}
+                x={c * cellSize}
+                y={r * cellSize}
+                width={cellSize + 0.15}
+                height={cellSize + 0.15}
+                fill={fill}
+              />
+            );
+          }
+        }
+      }
+      return cells;
+    } catch (e) {
+      return null;
+    }
+  }, [url, size]);
+
+  if (!url) return null;
+
+  return (
+    <g>
+      {/* Background Holographic Effects */}
+      <rect x={0} y={0} width={size} height={size} rx={4} fill="url(#qr-hologram-bg)" stroke="#006600" strokeWidth={1.5} />
+      <rect x={1} y={1} width={size-2} height={size-2} rx={3} fill="url(#qr-glow)" />
+      <rect x={1} y={1} width={size-2} height={size/2.2} rx={3} fill="url(#qr-glossy-overlay)" style={{ mixBlendMode: 'screen' }} />
+      
+      {/* Solid QR Matrix on top for high scanability */}
+      <g>
+        {qrData}
+      </g>
+    </g>
+  );
+}
 
 // ── SVG canvas dimensions (screen units; scales to mm on print) ──────────────
 const W  = 630;   // total width
@@ -120,15 +186,6 @@ const StampStrip = forwardRef(function StampStrip(
   { serial, url, variant = 'regular', productLabel = 'BƯỞi BẾN TRE', productCode = '', year = '', compact = false, bgImage = null },
   ref
 ) {
-  const [qrLeft,  setQrLeft]  = useState('');
-  const [qrRight, setQrRight] = useState('');
-
-  useEffect(() => {
-    if (!url) return;
-    const opts = { width: 140, margin: 1, color: { dark: '#000000', light: '#ffffff' } };
-    QRCode.toDataURL(url, opts).then(d => { setQrLeft(d); setQrRight(d); });
-  }, [url]);
-
   const today = new Date().toLocaleDateString('vi-VN');
   const sizeLabel = compact ? '38 × 38 mm' : '180 × 56 mm';
 
@@ -142,6 +199,23 @@ const StampStrip = forwardRef(function StampStrip(
             <clipPath id="compact-clip">
               <rect width="152" height="152" rx="4" />
             </clipPath>
+            <linearGradient id="qr-hologram-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
+              <stop offset="30%" stopColor="#e8f8ff" stopOpacity="0.95" />
+              <stop offset="50%" stopColor="#fff0f5" stopOpacity="0.9" />
+              <stop offset="70%" stopColor="#e6ffe6" stopOpacity="0.95" />
+              <stop offset="100%" stopColor="#ffffff" stopOpacity="0.9" />
+            </linearGradient>
+            <linearGradient id="qr-glossy-overlay" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.6" />
+              <stop offset="30%" stopColor="#ffffff" stopOpacity="0.1" />
+              <stop offset="50%" stopColor="#ffffff" stopOpacity="0.0" />
+              <stop offset="100%" stopColor="#ffffff" stopOpacity="0.0" />
+            </linearGradient>
+            <radialGradient id="qr-glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+            </radialGradient>
           </defs>
           {/* Background */}
           {bgImage ? (
@@ -160,7 +234,7 @@ const StampStrip = forwardRef(function StampStrip(
           <rect x="1" y="1" width="150" height="150" rx="3"
             fill="none" stroke="#006600" strokeWidth="1.5" />
           {/* QR code */}
-          {qrLeft && <image href={qrLeft} x="16" y="8" width="120" height="120" />}
+          {url && <g transform="translate(16, 8)"><DecorativeQRCode url={url} size={120} /></g>}
           {/* Serial number */}
           <text x="76" y="146" textAnchor="middle" fontSize="11"
             fontFamily="'JetBrains Mono', monospace" fontWeight="600" fill="#111">
@@ -188,6 +262,23 @@ const StampStrip = forwardRef(function StampStrip(
           <pattern id="border-hatch" patternUnits="userSpaceOnUse" width="4" height="4">
             <path d="M 0 4 L 4 0" stroke="#006600" strokeWidth="0.5" />
           </pattern>
+          <linearGradient id="qr-hologram-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
+            <stop offset="30%" stopColor="#e8f8ff" stopOpacity="0.95" />
+            <stop offset="50%" stopColor="#fff0f5" stopOpacity="0.9" />
+            <stop offset="70%" stopColor="#e6ffe6" stopOpacity="0.95" />
+            <stop offset="100%" stopColor="#ffffff" stopOpacity="0.9" />
+          </linearGradient>
+          <linearGradient id="qr-glossy-overlay" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.6" />
+            <stop offset="30%" stopColor="#ffffff" stopOpacity="0.1" />
+            <stop offset="50%" stopColor="#ffffff" stopOpacity="0.0" />
+            <stop offset="100%" stopColor="#ffffff" stopOpacity="0.0" />
+          </linearGradient>
+          <radialGradient id="qr-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.6" />
+            <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+          </radialGradient>
         </defs>
 
         {/* ── Strip background ──────────────────────────────────────────── */}
@@ -214,9 +305,10 @@ const StampStrip = forwardRef(function StampStrip(
         {/* ── Left QR zone ─────────────────────────────────────────────── */}
         <rect x="0" y="0" width={QW} height={H} fill="rgba(255,255,255,0.08)" />
         <line x1={QW} y1="8" x2={QW} y2={H-8} stroke="#006600" strokeWidth="0.8" strokeDasharray="4,3" />
-        {qrLeft && (
-          <image href={qrLeft} x={QW/2 - 58} y={H/2 - 58} width="116" height="116"
-            preserveAspectRatio="xMidYMid meet" />
+        {url && (
+          <g transform={`translate(${QW/2 - 58}, ${H/2 - 58})`}>
+            <DecorativeQRCode url={url} size={116} />
+          </g>
         )}
         {/* Serial below left QR */}
         <text x={QW/2} y={H - 14} textAnchor="middle" fontSize="7.5"
@@ -227,9 +319,10 @@ const StampStrip = forwardRef(function StampStrip(
         {/* ── Right QR zone ─────────────────────────────────────────────── */}
         <rect x={W-QW} y="0" width={QW} height={H} fill="rgba(255,255,255,0.08)" />
         <line x1={W-QW} y1="8" x2={W-QW} y2={H-8} stroke="#006600" strokeWidth="0.8" strokeDasharray="4,3" />
-        {qrRight && (
-          <image href={qrRight} x={W - QW/2 - 58} y={H/2 - 58} width="116" height="116"
-            preserveAspectRatio="xMidYMid meet" />
+        {url && (
+          <g transform={`translate(${W - QW/2 - 58}, ${H/2 - 58})`}>
+            <DecorativeQRCode url={url} size={116} />
+          </g>
         )}
         <text x={W - QW/2} y={H - 14} textAnchor="middle" fontSize="7.5"
           fontFamily="'JetBrains Mono',monospace" fontWeight="600" fill="#222" letterSpacing="1">

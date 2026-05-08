@@ -8,9 +8,10 @@ import { QrCode, ClipboardList, Search, Download, Printer, Box, Layers, Play, Ch
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('generator');
+  const [previewStamps, setPreviewStamps] = useState([]); // Array of stamps
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-gray-50 flex relative">
       {/* Sidebar */}
       <div className="w-64 bg-white border-r border-gray-200 flex flex-col shadow-sm">
         <div className="p-6 border-b border-gray-100 flex items-center space-x-3">
@@ -35,11 +36,51 @@ export default function App() {
 
       {/* Main Content */}
       <div className="flex-1 overflow-auto bg-gray-50/50">
-        {activeTab === 'generator' && <GeneratorTab />}
+        {activeTab === 'generator' && <GeneratorTab onPreview={(stamp) => setPreviewStamps([stamp])} onMultiPreview={(stamps) => setPreviewStamps(stamps)} />}
         {activeTab === 'history' && <HistoryTab />}
         {activeTab === 'search' && <SearchTab />}
         {activeTab === 'settings' && <UrlConfigTab />}
       </div>
+
+      {/* Fullscreen Preview Modal */}
+      {previewStamps.length > 0 && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-200" onClick={() => setPreviewStamps([])}>
+          <div className="relative w-full max-w-5xl bg-white rounded-3xl shadow-2xl flex flex-col max-h-[90vh]" onClick={e => e.stopPropagation()}>
+            <div className="p-8 border-b border-gray-100 flex items-center justify-between">
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900">Stamp Preview ({previewStamps.length} stamps)</h3>
+                <p className="text-sm text-gray-500">Inspecting selected stamp designs</p>
+              </div>
+              <button 
+                onClick={() => setPreviewStamps([])}
+                className="w-10 h-10 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-full flex items-center justify-center transition-colors"
+              >
+                <XCircle size={24} />
+              </button>
+            </div>
+            
+            <div className="flex-1 overflow-y-auto p-12 space-y-12 bg-gray-50/30">
+              {previewStamps.map((stamp, idx) => (
+                <div key={stamp.serial + idx} className="flex flex-col items-center">
+                  <div className="w-full flex justify-center [&>div]:w-full [&>div]:max-w-3xl [&_svg]:w-full [&_svg]:h-auto drop-shadow-xl bg-white p-6 rounded-2xl border border-gray-100">
+                    <StampStrip {...stamp} />
+                  </div>
+                  <div className="mt-4 flex items-center space-x-3">
+                    <span className="px-3 py-1 bg-white border border-gray-200 rounded-lg text-xs font-mono font-bold text-gray-500">#{idx + 1}</span>
+                    <span className="font-mono font-bold text-gray-700">{stamp.serial}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="p-6 border-t border-gray-100 bg-white rounded-b-3xl flex justify-center">
+              <p className="text-gray-500 font-mono text-sm bg-gray-100 px-6 py-2 rounded-full flex items-center space-x-2">
+                <Search size={14} /> <span>You can scroll to see all selected stamps</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -61,17 +102,9 @@ function NavItem({ icon, label, active, onClick }) {
 // -----------------------------------------------------------------------------
 // Generator Tab
 // -----------------------------------------------------------------------------
-function GeneratorTab() {
+function GeneratorTab({ onPreview, onMultiPreview }) {
   const [form, setForm] = useState({
-    type: 'SAN_PHAM',
-    prefix: '',
-    year: new Date().getFullYear().toString().slice(-2),
-    productCode: 'PLM',
-    qty: 1,
-    lPos: 0,
-    counter: 0,
-    productLabel: 'BƯỞI BẾN TRE',
-    variant: 'regular',
+// ... (lines 65-82)
     bgImage: null,
   });
   
@@ -80,6 +113,7 @@ function GeneratorTab() {
   const [stampConfig, setStampConfig] = useState(null);
   const [viewMode, setViewMode] = useState('grid');
   const [previewLimit, setPreviewLimit] = useState(50);
+  const [selectedSerials, setSelectedSerials] = useState(new Set());
 
   // Fetch config on mount
   useEffect(() => {
@@ -158,6 +192,45 @@ function GeneratorTab() {
     }
   };
 
+  const toggleSelect = (serial) => {
+    setSelectedSerials(prev => {
+      const next = new Set(prev);
+      if (next.has(serial)) next.delete(serial);
+      else next.add(serial);
+      return next;
+    });
+  };
+
+  const handleSelectAll = () => {
+    if (!result) return;
+    const allVisible = result.items.slice(0, previewLimit).map(it => it.serial);
+    const areAllSelected = allVisible.every(s => selectedSerials.has(s));
+    
+    setSelectedSerials(prev => {
+      const next = new Set(prev);
+      if (areAllSelected) {
+        allVisible.forEach(s => next.delete(s));
+      } else {
+        allVisible.forEach(s => next.add(s));
+      }
+      return next;
+    });
+  };
+
+  const handlePreviewSelected = () => {
+    if (selectedSerials.size === 0 || !result) return;
+    const selectedStamps = result.items
+      .filter(it => selectedSerials.has(it.serial))
+      .map(it => ({
+        serial: it.serial,
+        url: it.url,
+        productLabel: form.productLabel || 'PRODUCT',
+        variant: form.variant,
+        bgImage: form.bgImage
+      }));
+    onMultiPreview(selectedStamps);
+  };
+
   return (
     <div className="max-w-6xl mx-auto p-8 space-y-8">
       <div className="mb-8">
@@ -230,7 +303,16 @@ function GeneratorTab() {
           {/* Preview Panel */}
           <div className="bg-gray-50 p-8 border-l border-gray-100 flex flex-col justify-center items-center">
             <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-6 w-full text-left">Live Preview</h3>
-            <div className="w-full max-w-lg [&>div]:w-full [&_svg]:w-full [&_svg]:h-auto flex justify-center">
+            <div 
+              className="w-full max-w-lg [&>div]:w-full [&_svg]:w-full [&_svg]:h-auto flex justify-center relative cursor-pointer group"
+              onClick={() => onPreview && onPreview({
+                serial: ((form.prefix || '') + (form.year || '') + (form.productCode || '') + 'A00001').slice(0, 12),
+                url: `https://traceviet.intrustdss.vn/2/${form.prefix || ''}${form.year || ''}${form.productCode || ''}A00001`,
+                productLabel: form.productLabel || 'PRODUCT',
+                variant: form.variant,
+                bgImage: form.bgImage
+              })}
+            >
               <StampStrip 
                 serial={((form.prefix || '') + (form.year || '') + (form.productCode || '') + 'A00001').slice(0, 12)} 
                 url={`https://traceviet.intrustdss.vn/2/${form.prefix || ''}${form.year || ''}${form.productCode || ''}A00001`}
@@ -238,6 +320,11 @@ function GeneratorTab() {
                 variant={form.variant}
                 bgImage={form.bgImage}
               />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 rounded-xl transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                <div className="bg-white/90 backdrop-blur-sm text-gray-900 px-4 py-2 rounded-lg font-bold shadow-lg flex items-center space-x-2">
+                  <Search size={18} /> <span>Click to Enlarge</span>
+                </div>
+              </div>
             </div>
             <div className="mt-8 w-full">
                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Stamp Variant</label>
@@ -267,6 +354,24 @@ function GeneratorTab() {
                 <button onClick={() => setViewMode('grid')} className={`flex items-center space-x-1.5 px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${viewMode === 'grid' ? 'bg-white shadow-sm text-gray-800' : 'text-gray-500 hover:text-gray-700'}`}><LayoutGrid size={14} /> <span>Grid</span></button>
                 <button onClick={() => setViewMode('table')} className={`flex items-center space-x-1.5 px-3 py-1.5 text-sm font-medium rounded-md transition-colors ${viewMode === 'table' ? 'bg-white shadow-sm text-gray-800' : 'text-gray-500 hover:text-gray-700'}`}><List size={14} /> <span>Table</span></button>
               </div>
+              
+              <div className="h-8 w-[1px] bg-gray-200 self-center mx-1"></div>
+
+              <button 
+                onClick={handleSelectAll} 
+                className="flex items-center space-x-2 bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm"
+              >
+                {result.items.slice(0, previewLimit).every(s => selectedSerials.has(s.serial)) ? 'Bỏ chọn hết' : 'Chọn tất cả'}
+              </button>
+
+              <button 
+                onClick={handlePreviewSelected}
+                disabled={selectedSerials.size === 0}
+                className="flex items-center space-x-2 bg-green-600 text-white hover:bg-green-700 px-4 py-2 rounded-lg text-sm font-medium transition-all shadow-sm disabled:opacity-50 disabled:bg-gray-300"
+              >
+                <Search size={16} /> <span>Xem {selectedSerials.size} tem đã chọn</span>
+              </button>
+
               <a href={csvExportUrl(result.batchId)} target="_blank" rel="noreferrer" className="flex items-center space-x-2 bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm">
                 <Download size={16} /> <span>CSV</span>
               </a>
@@ -281,6 +386,14 @@ function GeneratorTab() {
                <table className="w-full text-left text-sm text-gray-600">
                   <thead className="bg-gray-100 text-xs uppercase font-semibold text-gray-500">
                     <tr>
+                      <th className="px-6 py-3 w-10">
+                        <input 
+                          type="checkbox" 
+                          checked={result.items.slice(0, previewLimit).every(s => selectedSerials.has(s.serial))} 
+                          onChange={handleSelectAll}
+                          className="w-4 h-4 rounded border-gray-300 text-green-600 focus:ring-green-500"
+                        />
+                      </th>
                       <th className="px-6 py-3">#</th>
                       <th className="px-6 py-3">Serial</th>
                       <th className="px-6 py-3">Full URL</th>
@@ -288,7 +401,15 @@ function GeneratorTab() {
                   </thead>
                   <tbody className="divide-y divide-gray-200 font-mono">
                     {result.items.slice(0, previewLimit).map((item, i) => (
-                      <tr key={item.serial} className="hover:bg-white">
+                      <tr key={item.serial} className={`hover:bg-white cursor-pointer ${selectedSerials.has(item.serial) ? 'bg-green-50/50' : ''}`} onClick={() => toggleSelect(item.serial)}>
+                        <td className="px-6 py-3" onClick={e => e.stopPropagation()}>
+                          <input 
+                            type="checkbox" 
+                            checked={selectedSerials.has(item.serial)} 
+                            onChange={() => toggleSelect(item.serial)}
+                            className="w-4 h-4 rounded border-gray-300 text-green-600 focus:ring-green-500"
+                          />
+                        </td>
                         <td className="px-6 py-3 text-gray-400">{i + 1}</td>
                         <td className="px-6 py-3 font-semibold text-gray-900">{item.serial}</td>
                         <td className="px-6 py-3 text-xs">{item.url}</td>
@@ -307,8 +428,22 @@ function GeneratorTab() {
             <div className="bg-gray-50/80 rounded-xl border border-gray-200 p-6 overflow-hidden">
                <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-6">
                  {result.items.slice(0, previewLimit).map((item, i) => (
-                   <div key={item.serial} className="flex flex-col items-center group bg-white p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                      <div className="w-full overflow-hidden flex justify-center [&>div]:w-full [&_svg]:w-full [&_svg]:h-auto">
+                   <div 
+                     key={item.serial} 
+                     className={`flex flex-col items-center group bg-white p-4 rounded-xl shadow-sm border transition-all cursor-pointer relative ${selectedSerials.has(item.serial) ? 'border-green-500 ring-2 ring-green-500/20' : 'border-gray-100 hover:border-green-300'}`}
+                     onClick={() => toggleSelect(item.serial)}
+                   >
+                      {/* Selection Checkbox */}
+                      <div className="absolute top-3 left-3 z-30" onClick={e => e.stopPropagation()}>
+                        <input 
+                          type="checkbox" 
+                          checked={selectedSerials.has(item.serial)} 
+                          onChange={() => toggleSelect(item.serial)}
+                          className="w-5 h-5 rounded border-gray-300 text-green-600 focus:ring-green-500 cursor-pointer shadow-sm"
+                        />
+                      </div>
+
+                      <div className="w-full overflow-hidden flex justify-center [&>div]:w-full [&_svg]:w-full [&_svg]:h-auto relative z-10 pointer-events-none">
                          <StampStrip 
                            serial={item.serial} 
                            url={item.url}
@@ -317,8 +452,26 @@ function GeneratorTab() {
                            bgImage={form.bgImage}
                          />
                       </div>
-                      <div className="mt-4 px-3 py-1.5 bg-gray-50 rounded-lg border border-gray-100 text-sm font-mono font-bold text-gray-700 group-hover:text-green-600 transition-colors w-full text-center">
+                      <div className="mt-4 px-3 py-1.5 bg-gray-50 rounded-lg border border-gray-100 text-sm font-mono font-bold text-gray-700 group-hover:bg-green-50 group-hover:text-green-700 transition-colors w-full text-center relative z-10 pointer-events-none">
                          {item.serial}
+                      </div>
+                      
+                      <div className="absolute inset-0 bg-green-500/0 group-hover:bg-green-500/5 transition-colors rounded-xl flex flex-col items-center justify-center z-20">
+                         <div 
+                           className="opacity-0 group-hover:opacity-100 bg-white shadow-lg text-green-700 px-4 py-2 rounded-lg font-bold text-sm flex items-center space-x-2 transform scale-95 group-hover:scale-100 transition-all absolute"
+                           onClick={(e) => {
+                             e.stopPropagation();
+                             onPreview({
+                               serial: item.serial,
+                               url: item.url,
+                               productLabel: form.productLabel || 'PRODUCT',
+                               variant: form.variant,
+                               bgImage: form.bgImage
+                             });
+                           }}
+                         >
+                           <Search size={16} /> <span>Preview Fullscreen</span>
+                         </div>
                       </div>
                    </div>
                  ))}
