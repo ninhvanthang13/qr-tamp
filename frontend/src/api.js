@@ -1,4 +1,4 @@
-const BASE = import.meta.env.VITE_API_BASE || '/api';
+const BASE = import.meta.env.VITE_API_BASE || 'https://qr-stamp-backend.onrender.com/api';
 
 async function req(path, opts = {}) {
   const r = await fetch(BASE + path, {
