@@ -6,6 +6,7 @@ const store   = require('./store');
 
 // GET /api/config  — returns effective stamp type config (flat, keyed by type + baseUrl at root)
 router.get('/config', (_req, res) => {
+  res.set('Cache-Control', 'no-store');
   res.json(gen.getEffectiveFlatConfig());
 });
 
@@ -29,6 +30,9 @@ router.put('/config', (req, res) => {
       productCodeLen: parseInt(val.productCodeLen, 10) || 0,
       letterCount:    parseInt(val.letterCount, 10) || 0,
       digitCount:     Math.max(1, parseInt(val.digitCount, 10) || 5),
+      qrType:         val.qrType === 'old' ? 'old' : 'new',
+      oldNumIdLen:    Math.max(0, parseInt(val.oldNumIdLen, 10) || 0),
+      oldDomain:      String(val.oldDomain || ''),
     };
   }
   store.saveStampTypeConfig({ baseUrl: baseUrl.trim().replace(/\/$/, ''), types: sanitized });
@@ -44,7 +48,7 @@ router.get('/state', (req, res) => {
 
 // POST /api/generate
 router.post('/generate', (req, res) => {
-  const { type, prefix, year, productCode = '', lPos, counter, qty, generatedBy = 'admin' } = req.body;
+  const { type, prefix, year, productCode = '', lPos, counter, qty, generatedBy = 'admin', oldNumIdValue = '' } = req.body;
 
   const cfg = gen.getEffectiveFlatConfig();
   if (!cfg[type]) return res.status(400).json({ error: 'Invalid stamp type' });
@@ -61,7 +65,8 @@ router.post('/generate', (req, res) => {
   try {
     const result = gen.generateBatch({
       type, prefix, year: parseInt(year), productCode: pc,
-      lPos: startLPos, counter: startCounter, qty: parseInt(qty)
+      lPos: startLPos, counter: startCounter, qty: parseInt(qty),
+      oldNumIdValue: String(oldNumIdValue || '')
     });
 
     const batch = store.addBatch({

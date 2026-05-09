@@ -15,6 +15,9 @@ const STAMP_CONFIG = {
     productCodeLen: 3,
     letterCount: 1,
     digitCount: 5,
+    qrType: 'new',
+    oldNumIdLen: 0,
+    oldDomain: '',
     regex: /^C\d{2}[A-Z]{3}[A-Z]\d{5}$/
   },
   THUNG: {
@@ -26,6 +29,9 @@ const STAMP_CONFIG = {
     productCodeLen: 0, // Không dùng mã sản phẩm
     letterCount: 2,
     digitCount: 7,
+    qrType: 'new',
+    oldNumIdLen: 0,
+    oldDomain: '',
     regex: /^T\d{2}[A-Z]{2}\d{7}$/
   },
   SAN_PHAM: {
@@ -37,6 +43,9 @@ const STAMP_CONFIG = {
     productCodeLen: 3,
     letterCount: 2,
     digitCount: 5,
+    qrType: 'new',
+    oldNumIdLen: 0,
+    oldDomain: '',
     regex: /^\d{2}[A-Z]{3}[A-Z]{2}\d{5}$/
   }
 };

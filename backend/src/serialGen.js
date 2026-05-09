@@ -5,6 +5,15 @@ const store = require('./store');
 
 // Build the ordered format array from a type config object
 function buildFormat(cfg) {
+  if (cfg.qrType === 'old') {
+    const parts = [];
+    if (cfg.prefix) parts.push('PREFIX');
+    if (cfg.oldNumIdLen > 0) parts.push('OLD_NUM_ID');
+    if (cfg.productCodeLen > 0) parts.push('PRODUCT_CODE');
+    if (cfg.letterCount > 0) parts.push('LETTERS');
+    parts.push('DIGITS');
+    return parts;
+  }
   const parts = [];
   if (cfg.prefix) parts.push('PREFIX');
   parts.push('YEAR');
@@ -17,6 +26,14 @@ function buildFormat(cfg) {
 // Build a validation regex from config params
 function buildRegex(cfg) {
   let pat = '';
+  if (cfg.qrType === 'old') {
+    if (cfg.prefix) pat += cfg.prefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    if (cfg.oldNumIdLen > 0) pat += `[0-9]{${cfg.oldNumIdLen}}`;
+    if (cfg.productCodeLen > 0) pat += `[A-Z0-9]{${cfg.productCodeLen}}`;
+    if (cfg.letterCount > 0) pat += `[A-Z]{${cfg.letterCount}}`;
+    pat += `\\d{${cfg.digitCount}}`;
+    return new RegExp(`^${pat}$`);
+  }
   if (cfg.prefix) pat += cfg.prefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   pat += `\\d{2}`;
   if (cfg.productCodeLen > 0) pat += `[A-Z]{${cfg.productCodeLen}}`;
@@ -41,6 +58,9 @@ function getEffectiveConfig() {
       productCodeLen: (override && override.productCodeLen != null) ? override.productCodeLen : def.productCodeLen,
       letterCount:    (override && override.letterCount    != null) ? override.letterCount    : def.letterCount,
       digitCount:     (override && override.digitCount     != null) ? override.digitCount     : def.digitCount,
+      qrType:         (override && override.qrType         != null) ? override.qrType         : def.qrType || 'new',
+      oldNumIdLen:    (override && override.oldNumIdLen    != null) ? override.oldNumIdLen    : def.oldNumIdLen || 0,
+      oldDomain:      (override && override.oldDomain      != null) ? override.oldDomain      : def.oldDomain || '',
     };
     merged.format = buildFormat(merged);
     merged.regex  = buildRegex(merged);
@@ -63,12 +83,15 @@ function letterFromPos(pos) {
     : String.fromCharCode(65 + (ZIGZAG - p));
 }
 
-function makeSerial(typeCfg, year, productCode, lPos, counter) {
+function makeSerial(typeCfg, year, productCode, lPos, counter, oldNumIdValue) {
   const parts = {
     PREFIX:       typeCfg.prefix || '',
-    YEAR:         String(year).slice(-2),
+    YEAR:         typeCfg.qrType === 'old' ? '' : String(year).slice(-2),
+    OLD_NUM_ID:   typeCfg.qrType === 'old'
+      ? String(oldNumIdValue || '0').padStart(typeCfg.oldNumIdLen, '0').slice(0, typeCfg.oldNumIdLen)
+      : '',
     PRODUCT_CODE: typeCfg.productCodeLen > 0
-      ? ((productCode || 'AAA') + 'AAA').slice(0, typeCfg.productCodeLen).toUpperCase()
+      ? ((productCode || 'A').padEnd(typeCfg.productCodeLen, 'A')).slice(0, typeCfg.productCodeLen).toUpperCase()
       : '',
     DIGITS:       String(counter).padStart(typeCfg.digitCount, '0'),
   };
@@ -101,7 +124,7 @@ function advance(typeCfg, lPos, counter) {
   return { lPos, counter };
 }
 
-function generateBatch({ type, prefix, year, productCode = '', lPos = 0, counter = 0, qty }) {
+function generateBatch({ type, prefix, year, productCode = '', lPos = 0, counter = 0, qty, oldNumIdValue = '' }) {
   const { baseUrl, types } = getEffectiveConfig();
   const typeCfg = types[type];
   if (!typeCfg) throw new Error(`Unknown stamp type: ${type}`);
@@ -112,9 +135,13 @@ function generateBatch({ type, prefix, year, productCode = '', lPos = 0, counter
   const items = [];
   let lp = lPos, ct = counter;
 
+  const effectiveDomain = effectiveTypeCfg.qrType === 'old' && effectiveTypeCfg.oldDomain
+    ? effectiveTypeCfg.oldDomain.trim().replace(/\/$/, '')
+    : baseUrl;
+
   for (let i = 0; i < qty; i++) {
-    const serial = makeSerial(effectiveTypeCfg, year, productCode, lp, ct);
-    const url    = baseUrl + effectiveTypeCfg.urlPath + serial;
+    const serial = makeSerial(effectiveTypeCfg, year, productCode, lp, ct, oldNumIdValue);
+    const url    = effectiveDomain + effectiveTypeCfg.urlPath + serial;
     items.push({ serial, url });
     ({ lPos: lp, counter: ct } = advance(effectiveTypeCfg, lp, ct));
   }

@@ -14,6 +14,16 @@
       "lPos": 0,
       "counter": 101,
       "updatedAt": "2026-05-07T01:20:26.818Z"
+    },
+    "SAN_PHAM:26:": {
+      "lPos": 0,
+      "counter": 10,
+      "updatedAt": "2026-05-09T02:44:58.385Z"
+    },
+    "SAN_PHAM:26:SAURIENG": {
+      "lPos": 0,
+      "counter": 10,
+      "updatedAt": "2026-05-09T02:45:09.834Z"
     }
   },
   "batches": [
@@ -5508,6 +5518,271 @@
         }
       ],
       "createdAt": "2026-05-07T01:27:24.765Z"
+    },
+    {
+      "id": 17,
+      "type": "SAN_PHAM",
+      "year": 26,
+      "productCode": "",
+      "qty": 10,
+      "fromSerial": "000929292929222AA00000000",
+      "toSerial": "000929292929222AA00000009",
+      "generatedBy": "admin",
+      "items": [
+        {
+          "serial": "000929292929222AA00000000",
+          "url": "https://traceviet.mae.gov.vn/02/000929292929222AA00000000"
+        },
+        {
+          "serial": "000929292929222AA00000001",
+          "url": "https://traceviet.mae.gov.vn/02/000929292929222AA00000001"
+        },
+        {
+          "serial": "000929292929222AA00000002",
+          "url": "https://traceviet.mae.gov.vn/02/000929292929222AA00000002"
+        },
+        {
+          "serial": "000929292929222AA00000003",
+          "url": "https://traceviet.mae.gov.vn/02/000929292929222AA00000003"
+        },
+        {
+          "serial": "000929292929222AA00000004",
+          "url": "https://traceviet.mae.gov.vn/02/000929292929222AA00000004"
+        },
+        {
+          "serial": "000929292929222AA00000005",
+          "url": "https://traceviet.mae.gov.vn/02/000929292929222AA00000005"
+        },
+        {
+          "serial": "000929292929222AA00000006",
+          "url": "https://traceviet.mae.gov.vn/02/000929292929222AA00000006"
+        },
+        {
+          "serial": "000929292929222AA00000007",
+          "url": "https://traceviet.mae.gov.vn/02/000929292929222AA00000007"
+        },
+        {
+          "serial": "000929292929222AA00000008",
+          "url": "https://traceviet.mae.gov.vn/02/000929292929222AA00000008"
+        },
+        {
+          "serial": "000929292929222AA00000009",
+          "url": "https://traceviet.mae.gov.vn/02/000929292929222AA00000009"
+        }
+      ],
+      "createdAt": "2026-05-09T02:42:52.895Z"
+    },
+    {
+      "id": 18,
+      "type": "SAN_PHAM",
+      "year": 26,
+      "productCode": "",
+      "qty": 10,
+      "fromSerial": "000000000000000AA00000000",
+      "toSerial": "000000000000000AA00000009",
+      "generatedBy": "admin",
+      "items": [
+        {
+          "serial": "000000000000000AA00000000",
+          "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000000"
+        },
+        {
+          "serial": "000000000000000AA00000001",
+          "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000001"
+        },
+        {
+          "serial": "000000000000000AA00000002",
+          "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000002"
+        },
+        {
+          "serial": "000000000000000AA00000003",
+          "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000003"
+        },
+        {
+          "serial": "000000000000000AA00000004",
+          "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000004"
+        },
+        {
+          "serial": "000000000000000AA00000005",
+          "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000005"
+        },
+        {
+          "serial": "000000000000000AA00000006",
+          "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000006"
+        },
+        {
+          "serial": "000000000000000AA00000007",
+          "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000007"
+        },
+        {
+          "serial": "000000000000000AA00000008",
+          "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000008"
+        },
+        {
+          "serial": "000000000000000AA00000009",
+          "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000009"
+        }
+      ],
+      "createdAt": "2026-05-09T02:43:56.930Z"
+    },
+    {
+      "id": 19,
+      "type": "SAN_PHAM",
+      "year": 26,
+      "productCode": "",
+      "qty": 10,
+      "fromSerial": "000000000000000AA00000010",
+      "toSerial": "000000000000000AA00000019",
+      "generatedBy": "admin",
+      "items": [
+        {
+          "serial": "000000000000000AA00000010",
+          "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000010"
+        },
+        {
+          "serial": "000000000000000AA00000011",
+          "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000011"
+        },
+        {
+          "serial": "000000000000000AA00000012",
+          "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000012"
+        },
+        {
+          "serial": "000000000000000AA00000013",
+          "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000013"
+        },
+        {
+          "serial": "000000000000000AA00000014",
+          "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000014"
+        },
+        {
+          "serial": "000000000000000AA00000015",
+          "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000015"
+        },
+        {
+          "serial": "000000000000000AA00000016",
+          "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000016"
+        },
+        {
+          "serial": "000000000000000AA00000017",
+          "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000017"
+        },
+        {
+          "serial": "000000000000000AA00000018",
+          "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000018"
+        },
+        {
+          "serial": "000000000000000AA00000019",
+          "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000019"
+        }
+      ],
+      "createdAt": "2026-05-09T02:44:07.829Z"
+    },
+    {
+      "id": 20,
+      "type": "SAN_PHAM",
+      "year": 26,
+      "productCode": "",
+      "qty": 10,
+      "fromSerial": "AI000929292929222AAAAAAAAA00000000",
+      "toSerial": "AI000929292929222AAAAAAAAA00000009",
+      "generatedBy": "admin",
+      "items": [
+        {
+          "serial": "AI000929292929222AAAAAAAAA00000000",
+          "url": "https://traceviet.mae.gov.vn/02/AI000929292929222AAAAAAAAA00000000"
+        },
+        {
+          "serial": "AI000929292929222AAAAAAAAA00000001",
+          "url": "https://traceviet.mae.gov.vn/02/AI000929292929222AAAAAAAAA00000001"
+        },
+        {
+          "serial": "AI000929292929222AAAAAAAAA00000002",
+          "url": "https://traceviet.mae.gov.vn/02/AI000929292929222AAAAAAAAA00000002"
+        },
+        {
+          "serial": "AI000929292929222AAAAAAAAA00000003",
+          "url": "https://traceviet.mae.gov.vn/02/AI000929292929222AAAAAAAAA00000003"
+        },
+        {
+          "serial": "AI000929292929222AAAAAAAAA00000004",
+          "url": "https://traceviet.mae.gov.vn/02/AI000929292929222AAAAAAAAA00000004"
+        },
+        {
+          "serial": "AI000929292929222AAAAAAAAA00000005",
+          "url": "https://traceviet.mae.gov.vn/02/AI000929292929222AAAAAAAAA00000005"
+        },
+        {
+          "serial": "AI000929292929222AAAAAAAAA00000006",
+          "url": "https://traceviet.mae.gov.vn/02/AI000929292929222AAAAAAAAA00000006"
+        },
+        {
+          "serial": "AI000929292929222AAAAAAAAA00000007",
+          "url": "https://traceviet.mae.gov.vn/02/AI000929292929222AAAAAAAAA00000007"
+        },
+        {
+          "serial": "AI000929292929222AAAAAAAAA00000008",
+          "url": "https://traceviet.mae.gov.vn/02/AI000929292929222AAAAAAAAA00000008"
+        },
+        {
+          "serial": "AI000929292929222AAAAAAAAA00000009",
+          "url": "https://traceviet.mae.gov.vn/02/AI000929292929222AAAAAAAAA00000009"
+        }
+      ],
+      "createdAt": "2026-05-09T02:44:58.378Z"
+    },
+    {
+      "id": 21,
+      "type": "SAN_PHAM",
+      "year": 26,
+      "productCode": "SAURIENG",
+      "qty": 10,
+      "fromSerial": "AI000929292929222SAURIENGA00000000",
+      "toSerial": "AI000929292929222SAURIENGA00000009",
+      "generatedBy": "admin",
+      "items": [
+        {
+          "serial": "AI000929292929222SAURIENGA00000000",
+          "url": "https://traceviet.mae.gov.vn/02/AI000929292929222SAURIENGA00000000"
+        },
+        {
+          "serial": "AI000929292929222SAURIENGA00000001",
+          "url": "https://traceviet.mae.gov.vn/02/AI000929292929222SAURIENGA00000001"
+        },
+        {
+          "serial": "AI000929292929222SAURIENGA00000002",
+          "url": "https://traceviet.mae.gov.vn/02/AI000929292929222SAURIENGA00000002"
+        },
+        {
+          "serial": "AI000929292929222SAURIENGA00000003",
+          "url": "https://traceviet.mae.gov.vn/02/AI000929292929222SAURIENGA00000003"
+        },
+        {
+          "serial": "AI000929292929222SAURIENGA00000004",
+          "url": "https://traceviet.mae.gov.vn/02/AI000929292929222SAURIENGA00000004"
+        },
+        {
+          "serial": "AI000929292929222SAURIENGA00000005",
+          "url": "https://traceviet.mae.gov.vn/02/AI000929292929222SAURIENGA00000005"
+        },
+        {
+          "serial": "AI000929292929222SAURIENGA00000006",
+          "url": "https://traceviet.mae.gov.vn/02/AI000929292929222SAURIENGA00000006"
+        },
+        {
+          "serial": "AI000929292929222SAURIENGA00000007",
+          "url": "https://traceviet.mae.gov.vn/02/AI000929292929222SAURIENGA00000007"
+        },
+        {
+          "serial": "AI000929292929222SAURIENGA00000008",
+          "url": "https://traceviet.mae.gov.vn/02/AI000929292929222SAURIENGA00000008"
+        },
+        {
+          "serial": "AI000929292929222SAURIENGA00000009",
+          "url": "https://traceviet.mae.gov.vn/02/AI000929292929222SAURIENGA00000009"
+        }
+      ],
+      "createdAt": "2026-05-09T02:45:09.825Z"
     }
   ],
   "serials": {
@@ -16078,7 +16353,407 @@
       "year": 26,
       "url": "https://traceviet.intrustdss.vn/02/26AA00000212",
       "generatedAt": "2026-05-07T01:27:24.765Z"
+    },
+    "000929292929222AA00000000": {
+      "batchId": 17,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000929292929222AA00000000",
+      "generatedAt": "2026-05-09T02:42:52.895Z"
+    },
+    "000929292929222AA00000001": {
+      "batchId": 17,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000929292929222AA00000001",
+      "generatedAt": "2026-05-09T02:42:52.895Z"
+    },
+    "000929292929222AA00000002": {
+      "batchId": 17,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000929292929222AA00000002",
+      "generatedAt": "2026-05-09T02:42:52.895Z"
+    },
+    "000929292929222AA00000003": {
+      "batchId": 17,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000929292929222AA00000003",
+      "generatedAt": "2026-05-09T02:42:52.895Z"
+    },
+    "000929292929222AA00000004": {
+      "batchId": 17,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000929292929222AA00000004",
+      "generatedAt": "2026-05-09T02:42:52.895Z"
+    },
+    "000929292929222AA00000005": {
+      "batchId": 17,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000929292929222AA00000005",
+      "generatedAt": "2026-05-09T02:42:52.895Z"
+    },
+    "000929292929222AA00000006": {
+      "batchId": 17,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000929292929222AA00000006",
+      "generatedAt": "2026-05-09T02:42:52.895Z"
+    },
+    "000929292929222AA00000007": {
+      "batchId": 17,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000929292929222AA00000007",
+      "generatedAt": "2026-05-09T02:42:52.895Z"
+    },
+    "000929292929222AA00000008": {
+      "batchId": 17,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000929292929222AA00000008",
+      "generatedAt": "2026-05-09T02:42:52.895Z"
+    },
+    "000929292929222AA00000009": {
+      "batchId": 17,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000929292929222AA00000009",
+      "generatedAt": "2026-05-09T02:42:52.895Z"
+    },
+    "000000000000000AA00000000": {
+      "batchId": 18,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000000",
+      "generatedAt": "2026-05-09T02:43:56.930Z"
+    },
+    "000000000000000AA00000001": {
+      "batchId": 18,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000001",
+      "generatedAt": "2026-05-09T02:43:56.930Z"
+    },
+    "000000000000000AA00000002": {
+      "batchId": 18,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000002",
+      "generatedAt": "2026-05-09T02:43:56.930Z"
+    },
+    "000000000000000AA00000003": {
+      "batchId": 18,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000003",
+      "generatedAt": "2026-05-09T02:43:56.930Z"
+    },
+    "000000000000000AA00000004": {
+      "batchId": 18,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000004",
+      "generatedAt": "2026-05-09T02:43:56.930Z"
+    },
+    "000000000000000AA00000005": {
+      "batchId": 18,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000005",
+      "generatedAt": "2026-05-09T02:43:56.930Z"
+    },
+    "000000000000000AA00000006": {
+      "batchId": 18,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000006",
+      "generatedAt": "2026-05-09T02:43:56.930Z"
+    },
+    "000000000000000AA00000007": {
+      "batchId": 18,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000007",
+      "generatedAt": "2026-05-09T02:43:56.930Z"
+    },
+    "000000000000000AA00000008": {
+      "batchId": 18,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000008",
+      "generatedAt": "2026-05-09T02:43:56.930Z"
+    },
+    "000000000000000AA00000009": {
+      "batchId": 18,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000009",
+      "generatedAt": "2026-05-09T02:43:56.930Z"
+    },
+    "000000000000000AA00000010": {
+      "batchId": 19,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000010",
+      "generatedAt": "2026-05-09T02:44:07.829Z"
+    },
+    "000000000000000AA00000011": {
+      "batchId": 19,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000011",
+      "generatedAt": "2026-05-09T02:44:07.829Z"
+    },
+    "000000000000000AA00000012": {
+      "batchId": 19,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000012",
+      "generatedAt": "2026-05-09T02:44:07.829Z"
+    },
+    "000000000000000AA00000013": {
+      "batchId": 19,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000013",
+      "generatedAt": "2026-05-09T02:44:07.829Z"
+    },
+    "000000000000000AA00000014": {
+      "batchId": 19,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000014",
+      "generatedAt": "2026-05-09T02:44:07.829Z"
+    },
+    "000000000000000AA00000015": {
+      "batchId": 19,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000015",
+      "generatedAt": "2026-05-09T02:44:07.829Z"
+    },
+    "000000000000000AA00000016": {
+      "batchId": 19,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000016",
+      "generatedAt": "2026-05-09T02:44:07.829Z"
+    },
+    "000000000000000AA00000017": {
+      "batchId": 19,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000017",
+      "generatedAt": "2026-05-09T02:44:07.829Z"
+    },
+    "000000000000000AA00000018": {
+      "batchId": 19,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000018",
+      "generatedAt": "2026-05-09T02:44:07.829Z"
+    },
+    "000000000000000AA00000019": {
+      "batchId": 19,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/000000000000000AA00000019",
+      "generatedAt": "2026-05-09T02:44:07.829Z"
+    },
+    "AI000929292929222AAAAAAAAA00000000": {
+      "batchId": 20,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/AI000929292929222AAAAAAAAA00000000",
+      "generatedAt": "2026-05-09T02:44:58.378Z"
+    },
+    "AI000929292929222AAAAAAAAA00000001": {
+      "batchId": 20,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/AI000929292929222AAAAAAAAA00000001",
+      "generatedAt": "2026-05-09T02:44:58.378Z"
+    },
+    "AI000929292929222AAAAAAAAA00000002": {
+      "batchId": 20,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/AI000929292929222AAAAAAAAA00000002",
+      "generatedAt": "2026-05-09T02:44:58.378Z"
+    },
+    "AI000929292929222AAAAAAAAA00000003": {
+      "batchId": 20,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/AI000929292929222AAAAAAAAA00000003",
+      "generatedAt": "2026-05-09T02:44:58.378Z"
+    },
+    "AI000929292929222AAAAAAAAA00000004": {
+      "batchId": 20,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/AI000929292929222AAAAAAAAA00000004",
+      "generatedAt": "2026-05-09T02:44:58.378Z"
+    },
+    "AI000929292929222AAAAAAAAA00000005": {
+      "batchId": 20,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/AI000929292929222AAAAAAAAA00000005",
+      "generatedAt": "2026-05-09T02:44:58.378Z"
+    },
+    "AI000929292929222AAAAAAAAA00000006": {
+      "batchId": 20,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/AI000929292929222AAAAAAAAA00000006",
+      "generatedAt": "2026-05-09T02:44:58.378Z"
+    },
+    "AI000929292929222AAAAAAAAA00000007": {
+      "batchId": 20,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/AI000929292929222AAAAAAAAA00000007",
+      "generatedAt": "2026-05-09T02:44:58.378Z"
+    },
+    "AI000929292929222AAAAAAAAA00000008": {
+      "batchId": 20,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/AI000929292929222AAAAAAAAA00000008",
+      "generatedAt": "2026-05-09T02:44:58.378Z"
+    },
+    "AI000929292929222AAAAAAAAA00000009": {
+      "batchId": 20,
+      "type": "SAN_PHAM",
+      "productCode": "",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/AI000929292929222AAAAAAAAA00000009",
+      "generatedAt": "2026-05-09T02:44:58.378Z"
+    },
+    "AI000929292929222SAURIENGA00000000": {
+      "batchId": 21,
+      "type": "SAN_PHAM",
+      "productCode": "SAURIENG",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/AI000929292929222SAURIENGA00000000",
+      "generatedAt": "2026-05-09T02:45:09.825Z"
+    },
+    "AI000929292929222SAURIENGA00000001": {
+      "batchId": 21,
+      "type": "SAN_PHAM",
+      "productCode": "SAURIENG",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/AI000929292929222SAURIENGA00000001",
+      "generatedAt": "2026-05-09T02:45:09.825Z"
+    },
+    "AI000929292929222SAURIENGA00000002": {
+      "batchId": 21,
+      "type": "SAN_PHAM",
+      "productCode": "SAURIENG",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/AI000929292929222SAURIENGA00000002",
+      "generatedAt": "2026-05-09T02:45:09.825Z"
+    },
+    "AI000929292929222SAURIENGA00000003": {
+      "batchId": 21,
+      "type": "SAN_PHAM",
+      "productCode": "SAURIENG",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/AI000929292929222SAURIENGA00000003",
+      "generatedAt": "2026-05-09T02:45:09.825Z"
+    },
+    "AI000929292929222SAURIENGA00000004": {
+      "batchId": 21,
+      "type": "SAN_PHAM",
+      "productCode": "SAURIENG",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/AI000929292929222SAURIENGA00000004",
+      "generatedAt": "2026-05-09T02:45:09.825Z"
+    },
+    "AI000929292929222SAURIENGA00000005": {
+      "batchId": 21,
+      "type": "SAN_PHAM",
+      "productCode": "SAURIENG",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/AI000929292929222SAURIENGA00000005",
+      "generatedAt": "2026-05-09T02:45:09.825Z"
+    },
+    "AI000929292929222SAURIENGA00000006": {
+      "batchId": 21,
+      "type": "SAN_PHAM",
+      "productCode": "SAURIENG",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/AI000929292929222SAURIENGA00000006",
+      "generatedAt": "2026-05-09T02:45:09.825Z"
+    },
+    "AI000929292929222SAURIENGA00000007": {
+      "batchId": 21,
+      "type": "SAN_PHAM",
+      "productCode": "SAURIENG",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/AI000929292929222SAURIENGA00000007",
+      "generatedAt": "2026-05-09T02:45:09.825Z"
+    },
+    "AI000929292929222SAURIENGA00000008": {
+      "batchId": 21,
+      "type": "SAN_PHAM",
+      "productCode": "SAURIENG",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/AI000929292929222SAURIENGA00000008",
+      "generatedAt": "2026-05-09T02:45:09.825Z"
+    },
+    "AI000929292929222SAURIENGA00000009": {
+      "batchId": 21,
+      "type": "SAN_PHAM",
+      "productCode": "SAURIENG",
+      "year": 26,
+      "url": "https://traceviet.mae.gov.vn/02/AI000929292929222SAURIENGA00000009",
+      "generatedAt": "2026-05-09T02:45:09.825Z"
     }
   },
-  "nextBatchId": 17
+  "nextBatchId": 22
 }

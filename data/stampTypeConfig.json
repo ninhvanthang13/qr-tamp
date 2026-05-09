@@ -8,7 +8,10 @@
       "year": "",
       "productCodeLen": 3,
       "letterCount": 1,
-      "digitCount": 5
+      "digitCount": 5,
+      "qrType": "new",
+      "oldNumIdLen": 0,
+      "oldDomain": ""
     },
     "THUNG": {
       "name": "Thùng",
@@ -17,16 +20,22 @@
       "year": "",
       "productCodeLen": 0,
       "letterCount": 2,
-      "digitCount": 7
+      "digitCount": 7,
+      "qrType": "new",
+      "oldNumIdLen": 0,
+      "oldDomain": ""
     },
     "SAN_PHAM": {
       "name": "Sản phẩm",
       "urlPath": "/02/",
-      "prefix": "",
+      "prefix": "AI",
       "year": "",
-      "productCodeLen": 0,
-      "letterCount": 2,
-      "digitCount": 8
+      "productCodeLen": 8,
+      "letterCount": 1,
+      "digitCount": 8,
+      "qrType": "old",
+      "oldNumIdLen": 15,
+      "oldDomain": "https://traceviet.mae.gov.vn/"
     }
   }
 }

@@ -100,11 +100,65 @@ function NavItem({ icon, label, active, onClick }) {
 }
 
 // -----------------------------------------------------------------------------
+// Live Preview Panel (used inside GeneratorTab)
+// -----------------------------------------------------------------------------
+function LivePreviewPanel({ stampConfig, form, activeCfg, isOld, onPreview }) {
+  const numIdLen = activeCfg ? (activeCfg.oldNumIdLen || 0) : 0;
+  const numIdDisplay = isOld
+    ? String(form.oldNumIdValue || '').padStart(numIdLen, '0').slice(0, numIdLen)
+    : '';
+  const previewSerial = isOld
+    ? (activeCfg.prefix || '') + numIdDisplay + (form.productCode || '') + 'A' + '00001'
+    : (form.prefix || '') + (form.year || '') + (form.productCode || '') + 'A' + '00001';
+  const previewDomain = isOld && activeCfg && activeCfg.oldDomain
+    ? activeCfg.oldDomain.replace(/\/$/, '')
+    : (stampConfig && stampConfig.baseUrl) || 'https://traceviet.intrustdss.vn';
+  const previewPath = activeCfg ? activeCfg.urlPath : '/2/';
+  const previewUrl = previewDomain + previewPath + previewSerial;
+
+  return (
+    <div
+      className="w-full max-w-lg [&>div]:w-full [&_svg]:w-full [&_svg]:h-auto flex justify-center relative cursor-pointer group"
+      onClick={() => onPreview && onPreview({
+        serial: previewSerial,
+        url: previewUrl,
+        productLabel: form.productLabel || 'PRODUCT',
+        variant: form.variant,
+        bgImage: form.bgImage
+      })}
+    >
+      <StampStrip
+        serial={previewSerial}
+        url={previewUrl}
+        productLabel={form.productLabel || 'PRODUCT'}
+        variant={form.variant}
+        bgImage={form.bgImage}
+      />
+      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 rounded-xl transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+        <div className="bg-white/90 backdrop-blur-sm text-gray-900 px-4 py-2 rounded-lg font-bold shadow-lg flex items-center space-x-2">
+          <Search size={18} /> <span>Click to Enlarge</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// -----------------------------------------------------------------------------
 // Generator Tab
 // -----------------------------------------------------------------------------
 function GeneratorTab({ onPreview, onMultiPreview }) {
+  const currentYY = new Date().getFullYear().toString().slice(-2);
   const [form, setForm] = useState({
-// ... (lines 65-82)
+    type: 'CONG',
+    prefix: 'C',
+    year: currentYY,
+    productCode: '',
+    productLabel: 'PRODUCT',
+    qty: 10,
+    lPos: 0,
+    counter: 0,
+    variant: 'regular',
+    oldNumIdValue: '',
     bgImage: null,
   });
   
@@ -115,27 +169,38 @@ function GeneratorTab({ onPreview, onMultiPreview }) {
   const [previewLimit, setPreviewLimit] = useState(50);
   const [selectedSerials, setSelectedSerials] = useState(new Set());
 
-  // Fetch config on mount
+  // Derived — recomputed every render from latest state
+  const activeCfg = (stampConfig && stampConfig[form.type]) || null;
+  const isOld = activeCfg ? activeCfg.qrType === 'old' : false;
+
+  const [configKey, setConfigKey] = useState(0);
+  const refreshConfig = () => setConfigKey(k => k + 1);
+
+  // Fetch config on mount and on manual refresh
   useEffect(() => {
-    getConfig().then(setStampConfig).catch(console.error);
-  }, []);
+    getConfig().then(cfg => {
+      setStampConfig(cfg);
+    }).catch(console.error);
+  }, [configKey]);
 
   // Auto-fetch next sequence
   useEffect(() => {
+    if (!form.type || !stampConfig || !stampConfig[form.type]) return;
+    const cfg = stampConfig[form.type];
+    const old = cfg.qrType === 'old';
+    const pcReady = cfg.productCodeLen === 0 || old || form.productCode.length === cfg.productCodeLen;
+    if (!old && !form.year) return;
+    if (!pcReady) return;
     const fetchState = async () => {
       try {
-        const res = await getState(form.type, form.year, form.productCode);
+        const yearParam = old ? '0' : (form.year || currentYY);
+        const res = await getState(form.type, yearParam, form.productCode);
         setForm(f => ({ ...f, lPos: res.lPos, counter: res.counter }));
       } catch (err) {
         console.error('State fetch error', err);
       }
     };
-    if (form.type && form.year && stampConfig && stampConfig[form.type]) {
-      const config = stampConfig[form.type];
-      if (config.productCodeLen === 0 || form.productCode.length === config.productCodeLen) {
-        fetchState();
-      }
-    }
+    fetchState();
   }, [form.type, form.year, form.productCode, stampConfig]);
 
   const handleChange = (e) => {
@@ -179,7 +244,8 @@ function GeneratorTab({ onPreview, onMultiPreview }) {
         productCode: form.productCode,
         qty: parseInt(form.qty, 10),
         lPos: parseInt(form.lPos, 10),
-        counter: parseInt(form.counter, 10)
+        counter: parseInt(form.counter, 10),
+        oldNumIdValue: form.oldNumIdValue || ''
       });
       setResult(res);
       setPreviewLimit(50); // Reset preview limit for new batch
@@ -233,9 +299,19 @@ function GeneratorTab({ onPreview, onMultiPreview }) {
 
   return (
     <div className="max-w-6xl mx-auto p-8 space-y-8">
-      <div className="mb-8">
-        <h2 className="text-2xl font-bold text-gray-900">Generate QR Stamps</h2>
-        <p className="text-gray-500 mt-1">Create a new batch of serialized QR code strips for traceability.</p>
+      <div className="mb-8 flex items-start justify-between">
+        <div>
+          <h2 className="text-2xl font-bold text-gray-900">Generate QR Stamps</h2>
+          <p className="text-gray-500 mt-1">Create a new batch of serialized QR code strips for traceability.</p>
+        </div>
+        <button
+          type="button"
+          onClick={refreshConfig}
+          className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-gray-500 hover:text-green-700 bg-white border border-gray-200 rounded-lg hover:border-green-300 transition-colors shadow-sm"
+          title="Tải lại cấu hình từ server"
+        >
+          <Settings size={13} /> Làm mới cấu hình
+        </button>
       </div>
 
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
@@ -256,40 +332,99 @@ function GeneratorTab({ onPreview, onMultiPreview }) {
               </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-4">
-              <div>
-                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Prefix</label>
-                <input name="prefix" value={form.prefix} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-500 transition-all font-medium text-gray-700" />
+            {/* Badge loại tem */}
+            {activeCfg && (
+              <div className="flex items-center gap-2">
+                <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold ${isOld ? 'bg-orange-100 text-orange-700' : 'bg-green-100 text-green-700'}`}>
+                  {isOld ? '🟠 Tem Cũ (Old QR)' : '🟢 Tem Mới (New QR)'}
+                </span>
+                {isOld && <span className="text-xs text-gray-400">Cấu hình tại URL Config</span>}
               </div>
-              <div>
-                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Year (YY)</label>
-                <input name="year" value={form.year} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-500 transition-all font-medium text-gray-700" maxLength="2" />
-              </div>
-              <div>
-                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Product Code</label>
-                <input name="productCode" value={form.productCode} onChange={handleChange} disabled={stampConfig && stampConfig[form.type] && stampConfig[form.type].productCodeLen === 0} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-500 transition-all font-medium text-gray-700 disabled:opacity-50" maxLength={stampConfig && stampConfig[form.type] ? stampConfig[form.type].productCodeLen || 3 : 3} />
-              </div>
-            </div>
+            )}
 
+            {/* Prefix + Year/ProductCode */}
+            {isOld ? (
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Tiền tố (Prefix)</label>
+                  <input name="prefix" value={form.prefix} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-400 transition-all font-medium text-gray-700" />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Mã sản phẩm (Product Code)</label>
+                  <input name="productCode" value={form.productCode} onChange={handleChange}
+                    disabled={activeCfg && activeCfg.productCodeLen === 0}
+                    maxLength={activeCfg ? activeCfg.productCodeLen || 20 : 20}
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-orange-400 transition-all font-medium text-gray-700 disabled:opacity-50" />
+                </div>
+              </div>
+            ) : (
+              <div className="grid grid-cols-3 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Tiền tố (Prefix)</label>
+                  <input name="prefix" value={form.prefix} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-500 transition-all font-medium text-gray-700" />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Năm (YY)</label>
+                  <input name="year" value={form.year} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-500 transition-all font-medium text-gray-700" maxLength="2" />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Mã sản phẩm</label>
+                  <input name="productCode" value={form.productCode} onChange={handleChange}
+                    disabled={activeCfg && activeCfg.productCodeLen === 0}
+                    maxLength={activeCfg ? activeCfg.productCodeLen || 3 : 3}
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-500 transition-all font-medium text-gray-700 disabled:opacity-50" />
+                </div>
+              </div>
+            )}
+
+            {/* Quantity + Background */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Quantity</label>
+                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Số lượng (Qty)</label>
                 <input name="qty" type="number" min="1" max="50000" value={form.qty} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-500 transition-all font-medium text-gray-700" />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Background Image</label>
+                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Ảnh nền (Background Image)</label>
                 <input type="file" accept="image/*" onChange={handleImageUpload} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-green-500 transition-all font-medium text-gray-700 text-sm file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100" />
               </div>
             </div>
-            
-            <div className="grid grid-cols-2 gap-4 bg-blue-50/50 p-4 rounded-xl border border-blue-100">
-              <div>
-                <label className="block text-xs font-semibold text-blue-700 uppercase tracking-wider mb-2">Next LPos</label>
-                <input name="lPos" type="number" value={form.lPos} onChange={handleChange} className="w-full bg-white border border-blue-200 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500 text-sm font-mono text-blue-900" />
-              </div>
-              <div>
-                <label className="block text-xs font-semibold text-blue-700 uppercase tracking-wider mb-2">Next Counter</label>
-                <input name="counter" type="number" value={form.counter} onChange={handleChange} className="w-full bg-white border border-blue-200 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500 text-sm font-mono text-blue-900" />
+
+            {/* Sequence params */}
+            <div className={`p-4 rounded-xl border space-y-3 ${isOld ? 'bg-orange-50/60 border-orange-100' : 'bg-blue-50/50 border-blue-100'}`}>
+              <p className={`text-xs font-bold uppercase tracking-wider ${isOld ? 'text-orange-600' : 'text-blue-700'}`}>
+                {isOld ? 'Thông số Tem Cũ (Old QR)' : 'Thông số vị trí'}
+              </p>
+              {isOld && (
+                <div>
+                  <label className="block text-xs font-semibold text-orange-700 uppercase tracking-wider mb-1">
+                    Số ID bắt đầu (NumId — {activeCfg ? activeCfg.oldNumIdLen || '?' : '?'} chữ số)
+                  </label>
+                  <input
+                    name="oldNumIdValue"
+                    value={form.oldNumIdValue}
+                    onChange={handleChange}
+                    placeholder={'0'.repeat(activeCfg ? activeCfg.oldNumIdLen || 15 : 15)}
+                    maxLength={activeCfg ? activeCfg.oldNumIdLen || 15 : 15}
+                    className="w-full bg-white border border-orange-200 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-orange-400 text-sm font-mono text-gray-900"
+                  />
+                  <p className="text-xs text-orange-400 mt-1">vd: 018933401282822</p>
+                </div>
+              )}
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className={`block text-xs font-semibold uppercase tracking-wider mb-1 ${isOld ? 'text-orange-700' : 'text-blue-700'}`}>
+                    {isOld ? 'Vị trí chữ cái (LPos)' : 'Next LPos'}
+                  </label>
+                  <input name="lPos" type="number" value={form.lPos} onChange={handleChange}
+                    className={`w-full bg-white rounded-lg px-3 py-2 outline-none text-sm font-mono ${isOld ? 'border border-orange-200 focus:ring-2 focus:ring-orange-400 text-orange-900' : 'border border-blue-200 focus:ring-2 focus:ring-blue-500 text-blue-900'}`} />
+                </div>
+                <div>
+                  <label className={`block text-xs font-semibold uppercase tracking-wider mb-1 ${isOld ? 'text-orange-700' : 'text-blue-700'}`}>
+                    {isOld ? 'Số cuối bắt đầu (Counter)' : 'Next Counter'}
+                  </label>
+                  <input name="counter" type="number" value={form.counter} onChange={handleChange}
+                    className={`w-full bg-white rounded-lg px-3 py-2 outline-none text-sm font-mono ${isOld ? 'border border-orange-200 focus:ring-2 focus:ring-orange-400 text-orange-900' : 'border border-blue-200 focus:ring-2 focus:ring-blue-500 text-blue-900'}`} />
+                </div>
               </div>
             </div>
 
@@ -303,29 +438,13 @@ function GeneratorTab({ onPreview, onMultiPreview }) {
           {/* Preview Panel */}
           <div className="bg-gray-50 p-8 border-l border-gray-100 flex flex-col justify-center items-center">
             <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-6 w-full text-left">Live Preview</h3>
-            <div 
-              className="w-full max-w-lg [&>div]:w-full [&_svg]:w-full [&_svg]:h-auto flex justify-center relative cursor-pointer group"
-              onClick={() => onPreview && onPreview({
-                serial: ((form.prefix || '') + (form.year || '') + (form.productCode || '') + 'A00001').slice(0, 12),
-                url: `https://traceviet.intrustdss.vn/2/${form.prefix || ''}${form.year || ''}${form.productCode || ''}A00001`,
-                productLabel: form.productLabel || 'PRODUCT',
-                variant: form.variant,
-                bgImage: form.bgImage
-              })}
-            >
-              <StampStrip 
-                serial={((form.prefix || '') + (form.year || '') + (form.productCode || '') + 'A00001').slice(0, 12)} 
-                url={`https://traceviet.intrustdss.vn/2/${form.prefix || ''}${form.year || ''}${form.productCode || ''}A00001`}
-                productLabel={form.productLabel || 'PRODUCT'}
-                variant={form.variant}
-                bgImage={form.bgImage}
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 rounded-xl transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                <div className="bg-white/90 backdrop-blur-sm text-gray-900 px-4 py-2 rounded-lg font-bold shadow-lg flex items-center space-x-2">
-                  <Search size={18} /> <span>Click to Enlarge</span>
-                </div>
-              </div>
-            </div>
+            <LivePreviewPanel
+              stampConfig={stampConfig}
+              form={form}
+              activeCfg={activeCfg}
+              isOld={isOld}
+              onPreview={onPreview}
+            />
             <div className="mt-8 w-full">
                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Stamp Variant</label>
                <select name="variant" value={form.variant} onChange={handleChange} className="w-full bg-white border border-gray-200 rounded-xl px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-green-500 transition-all font-medium text-gray-700">
@@ -611,21 +730,26 @@ const FIELD_META = [
   { key: 'urlPath',        label: 'URL Path',           type: 'text',   placeholder: '/02/' },
   { key: 'prefix',        label: 'Tiền tố (Prefix)',   type: 'text',   placeholder: 'C hoặc để trống' },
   { key: 'year',          label: 'Năm (YY)',           type: 'text',   placeholder: 'Ví dụ: 26' },
-  { key: 'productCodeLen', label: 'Độ dài Mã SP (SSS)', type: 'number', placeholder: '3 (0 = không dùng)' },
+  { key: 'productCodeLen', label: 'Độ dài Mã SP (SSS)', type: 'text', placeholder: '3 (0 = không dùng)' },
   { key: 'letterCount',   label: 'Số chữ cái (A→Z)',   type: 'number', placeholder: '1 hoặc 2' },
   { key: 'digitCount',    label: 'Số chữ số cuối',     type: 'number', placeholder: '5' },
 ];
 
-function buildSerialPreview(cfg, sampleProduct = 'PLM') {
+function buildSerialPreview(cfg, sampleProduct = 'SAURIENG') {
+  if (cfg.qrType === 'old') {
+    const prefix = cfg.prefix || '';
+    const numId = '0'.repeat(Math.max(0, cfg.oldNumIdLen || 0));
+    const pc = cfg.productCodeLen > 0 ? (sampleProduct + 'AAAA').slice(0, cfg.productCodeLen) : '';
+    const letters = cfg.letterCount === 1 ? 'A' : cfg.letterCount === 2 ? 'AA' : '';
+    const digits = '0'.repeat(Math.max(1, cfg.digitCount || 5));
+    return [prefix, numId, pc, letters, digits].join('');
+  }
   const yy = cfg.year || new Date().getFullYear().toString().slice(-2);
   const prefix = cfg.prefix || '';
   const pc = cfg.productCodeLen > 0 ? (sampleProduct + 'AAA').slice(0, cfg.productCodeLen) : '';
   const letters = cfg.letterCount === 1 ? 'A' : cfg.letterCount === 2 ? 'AA' : '';
   const digits = '0'.repeat(Math.max(1, cfg.digitCount || 5));
-  const parts = [
-    prefix, yy, pc, letters, digits
-  ].filter(p => p !== undefined && p !== null);
-  return parts.join('');
+  return [prefix, yy, pc, letters, digits].join('');
 }
 
 function UrlConfigTab() {
@@ -650,6 +774,9 @@ function UrlConfigTab() {
           productCodeLen: v.productCodeLen ?? 0,
           letterCount: v.letterCount ?? 1,
           digitCount: v.digitCount ?? 5,
+          qrType: v.qrType || 'new',
+          oldNumIdLen: v.oldNumIdLen ?? 0,
+          oldDomain: v.oldDomain || '',
         };
       }
       setTypes(clean);
@@ -704,18 +831,67 @@ function UrlConfigTab() {
 
         {/* Per-type config */}
         {Object.entries(types).map(([type, cfg]) => {
+          const isOld = cfg.qrType === 'old';
           const serial = buildSerialPreview(cfg);
-          const url = (baseUrl || '<domain>') + cfg.urlPath + serial;
+          const domain = isOld && cfg.oldDomain ? cfg.oldDomain.replace(/\/$/, '') : (baseUrl || '<domain>');
+          const url = domain + cfg.urlPath + serial;
           return (
             <div key={type} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
               <div className="flex items-center gap-3 px-6 py-4 bg-gray-50 border-b border-gray-100">
                 <span className="bg-green-100 text-green-700 px-2.5 py-1 rounded-md text-xs font-bold">{type}</span>
                 <span className="font-semibold text-gray-700 text-sm">{cfg.name}</span>
+                <div className="ml-auto flex items-center gap-2">
+                  <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Loại tem:</span>
+                  <div className="flex bg-gray-100 p-0.5 rounded-lg">
+                    <button
+                      type="button"
+                      onClick={() => setField(type, 'qrType', 'new')}
+                      className={`px-3 py-1 text-xs font-bold rounded-md transition-colors ${!isOld ? 'bg-white shadow-sm text-green-700' : 'text-gray-500 hover:text-gray-700'}`}
+                    >New</button>
+                    <button
+                      type="button"
+                      onClick={() => setField(type, 'qrType', 'old')}
+                      className={`px-3 py-1 text-xs font-bold rounded-md transition-colors ${isOld ? 'bg-white shadow-sm text-orange-600' : 'text-gray-500 hover:text-gray-700'}`}
+                    >Old</button>
+                  </div>
+                </div>
               </div>
 
               <div className="p-6 space-y-4">
+                {/* Old-type specific fields */}
+                {isOld && (
+                  <div className="bg-orange-50 border border-orange-100 rounded-xl p-4 space-y-3">
+                    <p className="text-xs font-bold text-orange-600 uppercase tracking-wider">Cấu hình Tem Cũ (Old QR)</p>
+                    <p className="text-xs text-orange-700 font-mono">Cấu trúc: <span className="font-bold">{'{prefix}'}{'{numId}'}{'{maSP}'}{'{chữ}'}{'{số}'}</span></p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <div>
+                        <label className="block text-xs font-semibold text-orange-700 uppercase tracking-wider mb-1.5">Domain (Old)</label>
+                        <input
+                          type="text"
+                          value={cfg.oldDomain ?? ''}
+                          onChange={e => setField(type, 'oldDomain', e.target.value)}
+                          placeholder="https://traceviet.mae.gov.vn"
+                          className="w-full bg-white border border-orange-200 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-orange-400 font-mono text-sm text-gray-800"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-semibold text-orange-700 uppercase tracking-wider mb-1.5">Độ dài Số ID (NumId)</label>
+                        <input
+                          type="number"
+                          min="0"
+                          value={cfg.oldNumIdLen ?? 0}
+                          onChange={e => setField(type, 'oldNumIdLen', parseInt(e.target.value, 10) || 0)}
+                          placeholder="15"
+                          className="w-full bg-white border border-orange-200 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-orange-400 font-mono text-sm text-gray-800"
+                        />
+                        <p className="text-xs text-orange-500 mt-1">Số chữ số của NumId (vd: 15 → 018933401282822)</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {FIELD_META.map(({ key, label, type: ftype, placeholder }) => (
+                  {FIELD_META.filter(f => isOld ? !['year'].includes(f.key) : true).map(({ key, label, type: ftype, placeholder }) => (
                     <div key={key}>
                       <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">{label}</label>
                       <input
@@ -731,10 +907,12 @@ function UrlConfigTab() {
                 </div>
 
                 {/* Preview */}
-                <div className="bg-blue-50 rounded-xl border border-blue-100 px-4 py-3 space-y-1">
-                  <p className="text-xs font-semibold text-blue-600 uppercase tracking-wider">Preview</p>
-                  <p className="font-mono text-sm text-blue-900 font-bold">{serial}</p>
-                  <p className="font-mono text-xs text-blue-700 break-all">{url}</p>
+                <div className={`rounded-xl border px-4 py-3 space-y-1 ${isOld ? 'bg-orange-50 border-orange-100' : 'bg-blue-50 border-blue-100'}`}>
+                  <p className={`text-xs font-semibold uppercase tracking-wider ${isOld ? 'text-orange-600' : 'text-blue-600'}`}>
+                    Preview {isOld ? '(Old)' : '(New)'}
+                  </p>
+                  <p className={`font-mono text-sm font-bold ${isOld ? 'text-orange-900' : 'text-blue-900'}`}>{serial}</p>
+                  <p className={`font-mono text-xs break-all ${isOld ? 'text-orange-700' : 'text-blue-700'}`}>{url}</p>
                 </div>
               </div>
             </div>

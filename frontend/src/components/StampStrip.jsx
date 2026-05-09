@@ -23,13 +23,13 @@ function DecorativeQRCode({ url, size = 116 }) {
             const isDiamond = (dx + dy) <= (count * 0.45);
 
             if (isDiamond) {
-              fill = '#0066b3'; // Deeper Cyan/Blue
+              fill = '#3300ffff'; // Deeper Cyan/Blue
             } else if (r < count / 2) {
-              fill = '#c4005c'; // Deeper Magenta
+              fill = '#7e0b41ff'; // Deeper Magenta
             } else if (c < count / 2) {
-              fill = '#00802b'; // Deeper Green
+              fill = '#03c845ff'; // Deeper Green
             } else {
-              fill = '#cc0000'; // Deeper Red
+              fill = '#dc0404ff'; // Deeper Red
             }
 
             cells.push(
